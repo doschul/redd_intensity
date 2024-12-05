@@ -23,8 +23,8 @@ library(tidyverse)
 
 source("./src/redd_int_funs.R")
 source("./src/varlabs.R")
-load("./data/hh_pd_bal.RData")
-load("./data/int_df_full.RData")
+load("./data/rdat/hh_pd_bal.RData")
+load("./data/rdat/int_df_full.RData")
 
 
 # run REDD only or not

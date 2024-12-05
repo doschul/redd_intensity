@@ -5,7 +5,7 @@ library(ggpubr)
 rm(list = ls())
 
 # load data
-load("./data/vil_pd.RData")
+load("./data/rdat/vil_pd.RData")
 
 source("./src/redd_int_funs.R")
 

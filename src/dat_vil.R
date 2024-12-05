@@ -7,7 +7,7 @@
 
 rm(list = ls())
 
-setwd("C:/Users/DaSchulz/OneDrive - European Forest Institute/Dokumente/research/cifor")
+setwd("C:/Users/DaSchulz/OneDrive - European Forest Institute/Dokumente/research/redd_intensity")
 
 shape_path <- "C:/Users/DaSchulz/OneDrive - European Forest Institute/Dokumente/projects/cifor/1. Research/7. M2 Maps/A.4. GIS Files/GCS_M2_ph3_VillageData_20180531/shp/"
 
@@ -219,7 +219,7 @@ gfc_long <- gfc_long %>%
 
 
 # save
-save(gfc_long, file = "./data/gfc_long.RData")
+save(gfc_long, file = "./data/rdat/gfc_long.RData")
 
 #### 2b) JRC TDF data ####
 
@@ -357,13 +357,13 @@ for (i in seq_along(files$name)) {
   try({
     drive_download(
       as_id(files$id[i]),
-      path = str_c("./data/gee_jrc/", files$name[i])
+      path = str_c("./data/raw/gee_jrc/", files$name[i])
     )
   })
 }
 
 # read files
-jrc_files <- list.files("./data/gee_jrc/", 
+jrc_files <- list.files("./data/raw/gee_jrc/", 
                         pattern = "csv$", 
                         full.names = T)
 
@@ -374,11 +374,11 @@ jrc_dat$`system:index` <- NULL
 jrc_dat$.geo <- NULL
 jrc_dat$name <- NULL
 
-save(jrc_dat, file = "./data/jrc_dat.RData")
+save(jrc_dat, file = "./data/rdat/jrc_dat.RData")
 
 #### 2c) Village level covariate data ####
 
-vdf <- readxl::read_xlsx("./data/Processed_GCS_village_panel_16Dec16.xlsx")
+vdf <- readxl::read_xlsx("./data/raw/Processed_GCS_village_panel_16Dec16.xlsx")
 
 # Terraclimate precipitation data
 tc_prec <- ee$ImageCollection("IDAHO_EPSCOR/TERRACLIMATE") %>%
@@ -443,7 +443,7 @@ terraclimate_wide <- ee_long %>%
   mutate(year = as.integer(year))
 
 # save
-save(terraclimate_wide, file = "./data/terraclimate_wide.RData")
+save(terraclimate_wide, file = "./data/rdat/terraclimate_wide.RData")
 
   
 
@@ -451,11 +451,11 @@ save(terraclimate_wide, file = "./data/terraclimate_wide.RData")
 #### 2d) merge data into long format ####
 
 #load("./data/forest_loss.RData")
-load("./data/gfc_long.RData")
-load("./data/jrc_dat.RData")
-load("./data/hh_pd.RData")
-load("./data/vil_treat_agg.RData")
-load("./data/terraclimate_wide.RData")
+load("./data/rdat/gfc_long.RData")
+load("./data/rdat/jrc_dat.RData")
+load("./data/rdat/hh_pd.RData")
+load("./data/rdat/vil_treat_agg.RData")
+load("./data/rdat/terraclimate_wide.RData")
 
 
 # aggregate self-reported data to village level
@@ -497,4 +497,4 @@ vil_pd <- project_df %>%
   )
 
 # save data
-save(vil_pd, file = "./data/vil_pd.RData")
+save(vil_pd, file = "./data/rdat/vil_pd.RData")

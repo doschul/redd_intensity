@@ -6,7 +6,7 @@ rm(list=ls())
 library(tidyverse)
 library(readxl)
 
-setwd("C:/Users/DaSchulz/OneDrive - European Forest Institute/Dokumente/research/cifor")
+setwd("C:/Users/DaSchulz/OneDrive - European Forest Institute/Dokumente/research/redd_intensity")
 source("./src/varlabs.R")
 
 
@@ -506,13 +506,13 @@ hh_pd_full$Hh_clear_total2 <- NULL
 hh_pd_full$Hh_clear_total3 <- NULL
 
 
-save(hh_pd_full, file = "./data/hh_pd_full.RData")
+save(hh_pd_full, file = "./data/rdat/hh_pd_full.RData")
 
 
 
 ##### Filter and clean data (TBD) #####
 
-load(file = "./data/hh_pd_full.RData")
+load(file = "./data/rdat/hh_pd_full.RData")
 
 ctrl_vars <- c(
   # Personal 
@@ -639,7 +639,7 @@ hh_pd_bal <- hh_pd_bal %>%
   mutate(across(all_of(zero_vars), ~replace_na(., 0)))
 
 # save
-save(hh_pd_bal, file = "./data/hh_pd_bal.RData")
+save(hh_pd_bal, file = "./data/rdat/hh_pd_bal.RData")
 
 
 # impute missing values as village level means
@@ -649,5 +649,5 @@ hh_pd_bal_imp <- hh_pd_bal %>%
   ungroup()
 
 # save
-save(hh_pd_bal_imp, file = "./data/hh_pd_bal_imp.RData")
+save(hh_pd_bal_imp, file = "./data/rdat/hh_pd_bal_imp.RData")
 
