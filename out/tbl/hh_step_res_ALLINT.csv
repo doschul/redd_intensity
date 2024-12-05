@@ -1,0 +1,405 @@
+"effect","group","term","estimate","std.error","statistic","matching","outcome","n_treated","n_comparison","data","category","indicator","exposure","step"
+"fixed",NA,"int_avail_bin_CLE_1",0.0718401490435592,0.0259068901854933,2.77301322270577,TRUE,"DY_forest_share",233,145,"Short-term","Binary (any)"," CLE","Available",1
+"fixed",NA,"int_avail_bin_EE_1",0.024303804827676,0.0239751071309028,1.01370995737281,TRUE,"DY_forest_share",475,176,"Short-term","Binary (any)"," EE","Available",1
+"fixed",NA,"int_avail_bin_FE_1",0.0979811494481428,0.0458468399272547,2.13714074085825,TRUE,"DY_forest_share",125,73,"Short-term","Binary (any)"," FE","Available",1
+"fixed",NA,"int_avail_bin_NCLE_1",-0.000244635368072483,0.0251266314628952,-0.00973609886521158,TRUE,"DY_forest_share",275,157,"Short-term","Binary (any)"," NCLE","Available",1
+"fixed",NA,"int_avail_bin_RFAC_1",-0.00728462187059188,0.0456979917539088,-0.159407921245659,TRUE,"DY_forest_share",155,71,"Short-term","Binary (any)"," RFAC","Available",1
+"fixed",NA,"int_avail_bin_TC_1",0.0847735433995062,0.0268736740808937,3.15452003861941,TRUE,"DY_forest_share",204,48,"Short-term","Binary (any)"," TC","Available",1
+"fixed",NA,"int_avail_bin_OI_1",0.010187776256224,0.0311790731824461,0.326750452029463,TRUE,"DY_forest_share",199,103,"Short-term","Binary (any)"," OI","Available",1
+"fixed",NA,"int_invol_bin_CLE_1",0.0772087119269494,0.0284433060992714,2.7144774119253,TRUE,"DY_forest_share",160,117,"Short-term","Binary (any)"," CLE","Involved",1
+"fixed",NA,"int_invol_bin_EE_1",0.0424543315439138,0.0255481245635588,1.6617396489631,TRUE,"DY_forest_share",218,162,"Short-term","Binary (any)"," EE","Involved",1
+"fixed",NA,"int_invol_bin_FE_1",0.0127504764197596,0.0584989020065572,0.217960952811224,TRUE,"DY_forest_share",54,40,"Short-term","Binary (any)"," FE","Involved",1
+"fixed",NA,"int_invol_bin_NCLE_1",0.0880223266017332,0.0287686859640356,3.05965752873704,TRUE,"DY_forest_share",155,107,"Short-term","Binary (any)"," NCLE","Involved",1
+"fixed",NA,"int_invol_bin_RFAC_1",-0.0401044698341979,0.0914039370341699,-0.438760857961791,TRUE,"DY_forest_share",31,27,"Short-term","Binary (any)"," RFAC","Involved",1
+"fixed",NA,"int_invol_bin_TC_1",0.0410680880590762,0.0195323727921241,2.10256523854776,TRUE,"DY_forest_share",118,82,"Short-term","Binary (any)"," TC","Involved",1
+"fixed",NA,"int_invol_bin_OI_1",0.0370512156758017,0.0305269313039131,1.21372224764211,TRUE,"DY_forest_share",147,103,"Short-term","Binary (any)"," OI","Involved",1
+"fixed",NA,"int_chnge_bin_CLE_1",0.162367559471246,0.0522946226564772,3.1048614795031,TRUE,"DY_forest_share",59,45,"Short-term","Binary (any)"," CLE","Changed behavior",1
+"fixed",NA,"int_chnge_bin_EE_1",-0.00642379359619725,0.0570991378523042,-0.112502462170504,TRUE,"DY_forest_share",53,46,"Short-term","Binary (any)"," EE","Changed behavior",1
+"fixed",NA,"int_chnge_bin_FE_1",0.0111570370860188,0.101345347421444,0.110089287469926,TRUE,"DY_forest_share",20,17,"Short-term","Binary (any)"," FE","Changed behavior",1
+"fixed",NA,"int_chnge_bin_NCLE_1",0.0797831955712236,0.0330120748041781,2.41678828260519,TRUE,"DY_forest_share",77,66,"Short-term","Binary (any)"," NCLE","Changed behavior",1
+"fixed",NA,"int_chnge_bin_RFAC_1",0.200565127633094,0.157288045727394,1.27514539776727,TRUE,"DY_forest_share",13,11,"Short-term","Binary (any)"," RFAC","Changed behavior",1
+"fixed",NA,"int_chnge_bin_TC_1",0.10296234180718,0.0591046615028563,1.74203420151901,TRUE,"DY_forest_share",17,17,"Short-term","Binary (any)"," TC","Changed behavior",1
+"fixed",NA,"int_chnge_bin_OI_1",-0.00238315241370354,0.0445389976037852,-0.0535070958467419,TRUE,"DY_forest_share",46,41,"Short-term","Binary (any)"," OI","Changed behavior",1
+"fixed",NA,"int_avail_sum_CLE_1",0.0446461600212043,0.0263491197690397,1.694408026247,TRUE,"DY_forest_share",208,125,"Short-term","Count (sum)"," CLE","Available",1
+"fixed",NA,"int_avail_sum_EE_1",0.00927817884565328,0.0234069950884347,0.396384875999637,TRUE,"DY_forest_share",459,179,"Short-term","Count (sum)"," EE","Available",1
+"fixed",NA,"int_avail_sum_FE_1",0.0979811494481428,0.0458468399272547,2.13714074085825,TRUE,"DY_forest_share",125,73,"Short-term","Count (sum)"," FE","Available",1
+"fixed",NA,"int_avail_sum_NCLE_1",0.0349316795429596,0.0358709497517748,0.97381529579465,TRUE,"DY_forest_share",93,77,"Short-term","Count (sum)"," NCLE","Available",1
+"fixed",NA,"int_avail_sum_NCLE_2",-0.00526299370454131,0.0302577828266814,-0.173938511446397,TRUE,"DY_forest_share",136,85,"Short-term","Count (sum)"," NCLE","Available",2
+"fixed",NA,"int_avail_sum_NCLE_3",-0.0268010834635053,0.0662112265656387,-0.404781558259398,TRUE,"DY_forest_share",45,34,"Short-term","Count (sum)"," NCLE","Available",3
+"fixed",NA,"int_avail_sum_NCLE_4",0.0379011843780474,0.0268441723761843,1.4118961779456,TRUE,"DY_forest_share",32,27,"Short-term","Count (sum)"," NCLE","Available",4
+"fixed",NA,"int_avail_sum_NCLE_5",0.0168051699932629,0.0216751382080736,0.775320084787431,TRUE,"DY_forest_share",63,36,"Short-term","Count (sum)"," NCLE","Available",5
+"fixed",NA,"int_avail_sum_RFAC_1",0.0102952234659634,0.0449974344115999,0.228795788039626,TRUE,"DY_forest_share",154,68,"Short-term","Count (sum)"," RFAC","Available",1
+"fixed",NA,"int_avail_sum_TC_1",0.0847735433995062,0.0268736740808937,3.15452003861941,TRUE,"DY_forest_share",204,48,"Short-term","Count (sum)"," TC","Available",1
+"fixed",NA,"int_avail_sum_OI_1",0.00849280484356285,0.0353736216024908,0.240088643990154,TRUE,"DY_forest_share",163,81,"Short-term","Count (sum)"," OI","Available",1
+"fixed",NA,"int_avail_sum_OI_2",-0.0243353058654021,0.0421943869208337,-0.576742729099505,TRUE,"DY_forest_share",85,52,"Short-term","Count (sum)"," OI","Available",2
+"fixed",NA,"int_invol_sum_CLE_1",0.0539276888471518,0.0277479815628233,1.94348150062937,TRUE,"DY_forest_share",153,112,"Short-term","Count (sum)"," CLE","Involved",1
+"fixed",NA,"int_invol_sum_EE_1",0.0262081863513693,0.0265190488240855,0.988277766869454,TRUE,"DY_forest_share",213,163,"Short-term","Count (sum)"," EE","Involved",1
+"fixed",NA,"int_invol_sum_FE_1",0.0127504764197596,0.0584989020065572,0.217960952811224,TRUE,"DY_forest_share",54,40,"Short-term","Count (sum)"," FE","Involved",1
+"fixed",NA,"int_invol_sum_NCLE_1",0.0203431175695065,0.0356513104468156,0.570613458931733,TRUE,"DY_forest_share",99,79,"Short-term","Count (sum)"," NCLE","Involved",1
+"fixed",NA,"int_invol_sum_NCLE_2",0.0839268232141418,0.0322602060966511,2.60155880476083,TRUE,"DY_forest_share",59,47,"Short-term","Count (sum)"," NCLE","Involved",2
+"fixed",NA,"int_invol_sum_NCLE_3",0.0030008810562877,0.0211019725989536,0.142208556200879,TRUE,"DY_forest_share",16,15,"Short-term","Count (sum)"," NCLE","Involved",3
+"fixed",NA,"int_invol_sum_NCLE_4",0.0691906588269388,0.04944149770882,1.3994450417831,TRUE,"DY_forest_share",13,12,"Short-term","Count (sum)"," NCLE","Involved",4
+"fixed",NA,"int_invol_sum_NCLE_5",-0.0191122130723905,0.0370387970212489,-0.516005232605853,TRUE,"DY_forest_share",10,10,"Short-term","Count (sum)"," NCLE","Involved",5
+"fixed",NA,"int_invol_sum_RFAC_1",-0.0401044698341979,0.0914039370341699,-0.438760857961791,TRUE,"DY_forest_share",31,27,"Short-term","Count (sum)"," RFAC","Involved",1
+"fixed",NA,"int_invol_sum_TC_1",0.0410680880590762,0.0195323727921241,2.10256523854776,TRUE,"DY_forest_share",118,82,"Short-term","Count (sum)"," TC","Involved",1
+"fixed",NA,"int_invol_sum_OI_1",-0.0233034642670058,0.0363381227592413,-0.641295215534473,TRUE,"DY_forest_share",128,91,"Short-term","Count (sum)"," OI","Involved",1
+"fixed",NA,"int_invol_sum_OI_2",0.024405806530395,0.0438715641324135,0.556301262857491,TRUE,"DY_forest_share",41,32,"Short-term","Count (sum)"," OI","Involved",2
+"fixed",NA,"int_chnge_sum_CLE_1",0.0693109465403132,0.0521043107376478,1.33023440016898,TRUE,"DY_forest_share",53,43,"Short-term","Count (sum)"," CLE","Changed behavior",1
+"fixed",NA,"int_chnge_sum_EE_1",-0.00642379359619725,0.0570991378523042,-0.112502462170504,TRUE,"DY_forest_share",53,46,"Short-term","Count (sum)"," EE","Changed behavior",1
+"fixed",NA,"int_chnge_sum_FE_1",0.0111570370860188,0.101345347421444,0.110089287469926,TRUE,"DY_forest_share",20,17,"Short-term","Count (sum)"," FE","Changed behavior",1
+"fixed",NA,"int_chnge_sum_NCLE_1",0.0989743598889161,0.0372101422314541,2.65987588204519,TRUE,"DY_forest_share",75,66,"Short-term","Count (sum)"," NCLE","Changed behavior",1
+"fixed",NA,"int_chnge_sum_NCLE_2",-0.0625159793128308,0.0418968448539397,-1.49214050677977,TRUE,"DY_forest_share",5,5,"Short-term","Count (sum)"," NCLE","Changed behavior",2
+"fixed",NA,"int_chnge_sum_RFAC_1",0.200565127633094,0.157288045727394,1.27514539776727,TRUE,"DY_forest_share",13,11,"Short-term","Count (sum)"," RFAC","Changed behavior",1
+"fixed",NA,"int_chnge_sum_TC_1",0.10296234180718,0.0591046615028563,1.74203420151901,TRUE,"DY_forest_share",17,17,"Short-term","Count (sum)"," TC","Changed behavior",1
+"fixed",NA,"int_chnge_sum_OI_1",0.037254590665907,0.0370984359218564,1.00420920020401,TRUE,"DY_forest_share",45,40,"Short-term","Count (sum)"," OI","Changed behavior",1
+"fixed",NA,"int_cat_tot_availALL_1",-0.0581561081177669,0.0240576098897578,-2.4173684910622,TRUE,"DY_forest_share",386,191,"Short-term","Count (sum)","Total","Available",1
+"fixed",NA,"int_cat_tot_availALL_2",0.0147568837681706,0.0264980522908722,0.556904470041138,TRUE,"DY_forest_share",241,161,"Short-term","Count (sum)","Total","Available",2
+"fixed",NA,"int_cat_tot_availALL_3",-0.0946536175699082,0.0347067654082526,-2.72723823313715,TRUE,"DY_forest_share",161,116,"Short-term","Count (sum)","Total","Available",3
+"fixed",NA,"int_cat_tot_availALL_4",0.00513202419198635,0.0344429641740176,0.149000654126562,TRUE,"DY_forest_share",179,114,"Short-term","Count (sum)","Total","Available",4
+"fixed",NA,"int_cat_tot_availALL_5",0.0349900647451049,0.0270852237227021,1.29185068225142,TRUE,"DY_forest_share",193,159,"Short-term","Count (sum)","Total","Available",5
+"fixed",NA,"int_cat_tot_availALL_6",0.00250582563380897,0.0222324403026044,0.112710327777892,TRUE,"DY_forest_share",291,131,"Short-term","Count (sum)","Total","Available",6
+"fixed",NA,"int_cat_tot_availALL_7",-0.0141054511755419,0.0279497838858741,-0.504671207231438,TRUE,"DY_forest_share",210,89,"Short-term","Count (sum)","Total","Available",7
+"fixed",NA,"int_cat_tot_availALL_8",0.0349841323327397,0.030108118946235,1.161950117017,TRUE,"DY_forest_share",145,74,"Short-term","Count (sum)","Total","Available",8
+"fixed",NA,"int_cat_pos_availALL_1",-0.0126609677519186,0.0264791793395291,-0.478148041885039,TRUE,"DY_forest_share",374,160,"Short-term","Count (sum)","Positive","Available",1
+"fixed",NA,"int_cat_pos_availALL_2",-0.000123379545373864,0.0211503851718449,-0.00583344200927863,TRUE,"DY_forest_share",401,190,"Short-term","Count (sum)","Positive","Available",2
+"fixed",NA,"int_cat_pos_availALL_3",0.0130469731935085,0.025934394020178,0.503076076632347,TRUE,"DY_forest_share",242,162,"Short-term","Count (sum)","Positive","Available",3
+"fixed",NA,"int_cat_pos_availALL_4",0.0177568121979495,0.0225432850820206,0.78767633613929,TRUE,"DY_forest_share",40,36,"Short-term","Count (sum)","Positive","Available",4
+"fixed",NA,"int_cat_pos_availALL_6",-0.00253955220255022,0.0218975477742967,-0.115974273865092,TRUE,"DY_forest_share",168,33,"Short-term","Count (sum)","Positive","Available",6
+"fixed",NA,"int_cat_ena_availALL_1",0.0184753872933148,0.0213854615250734,0.863922776305452,TRUE,"DY_forest_share",437,212,"Short-term","Count (sum)","Enabling","Available",1
+"fixed",NA,"int_cat_ena_availALL_2",-0.0484433231133873,0.0270887598489923,-1.78831823174768,TRUE,"DY_forest_share",312,166,"Short-term","Count (sum)","Enabling","Available",2
+"fixed",NA,"int_cat_ena_availALL_3",0.00525929353891337,0.0229513575152206,0.229149562740486,TRUE,"DY_forest_share",276,125,"Short-term","Count (sum)","Enabling","Available",3
+"fixed",NA,"int_cat_ena_availALL_4",0.120614669608156,0.0555308064151507,2.17203165944386,TRUE,"DY_forest_share",113,33,"Short-term","Count (sum)","Enabling","Available",4
+"fixed",NA,"int_cat_neg_availALL_1",-0.00917385314057209,0.0239016487389954,-0.383816750080717,TRUE,"DY_forest_share",440,135,"Short-term","Count (sum)","Negative","Available",1
+"fixed",NA,"int_cat_neg_availALL_2",0.0141271818953963,0.0480001842217162,0.294315159919841,TRUE,"DY_forest_share",217,55,"Short-term","Count (sum)","Negative","Available",2
+"fixed",NA,"int_cat_tot_involALL_1",-0.0141723921822866,0.0184219056460261,-0.769322808107193,TRUE,"DY_forest_share",470,282,"Short-term","Count (sum)","Total","Involved",1
+"fixed",NA,"int_cat_tot_involALL_2",-0.0211243165615579,0.0213569601062944,-0.989106898005214,TRUE,"DY_forest_share",273,207,"Short-term","Count (sum)","Total","Involved",2
+"fixed",NA,"int_cat_tot_involALL_3",-0.00536210060516739,0.0212405111962812,-0.252446871716825,TRUE,"DY_forest_share",204,162,"Short-term","Count (sum)","Total","Involved",3
+"fixed",NA,"int_cat_tot_involALL_4",0.0139993842423148,0.0274576217314291,0.509854217500948,TRUE,"DY_forest_share",110,99,"Short-term","Count (sum)","Total","Involved",4
+"fixed",NA,"int_cat_tot_involALL_5",0.0793875514506199,0.0386096406434338,2.05615877608851,TRUE,"DY_forest_share",73,64,"Short-term","Count (sum)","Total","Involved",5
+"fixed",NA,"int_cat_tot_involALL_6",0.0901425687060245,0.0398728709342515,2.26074939160176,TRUE,"DY_forest_share",40,37,"Short-term","Count (sum)","Total","Involved",6
+"fixed",NA,"int_cat_tot_involALL_7",0.146805935985018,0.0651668373565901,2.25277061063594,TRUE,"DY_forest_share",14,13,"Short-term","Count (sum)","Total","Involved",7
+"fixed",NA,"int_cat_pos_involALL_1",0.0170832631711189,0.0190737178318083,0.895644117301032,TRUE,"DY_forest_share",367,253,"Short-term","Count (sum)","Positive","Involved",1
+"fixed",NA,"int_cat_pos_involALL_2",0.0518088557516555,0.0283905219308554,1.82486450505683,TRUE,"DY_forest_share",141,124,"Short-term","Count (sum)","Positive","Involved",2
+"fixed",NA,"int_cat_pos_involALL_3",0.0580223890238285,0.025311638636908,2.29232053507683,TRUE,"DY_forest_share",83,65,"Short-term","Count (sum)","Positive","Involved",3
+"fixed",NA,"int_cat_pos_involALL_4",0.056895412993164,0.0406205308478057,1.40065655976619,TRUE,"DY_forest_share",32,32,"Short-term","Count (sum)","Positive","Involved",4
+"fixed",NA,"int_cat_pos_involALL_5",0.0594597725041316,0.0429169274043357,1.38546200998827,TRUE,"DY_forest_share",16,14,"Short-term","Count (sum)","Positive","Involved",5
+"fixed",NA,"int_cat_pos_involALL_6",-0.0191122130723905,0.0370387970212489,-0.516005232605853,TRUE,"DY_forest_share",10,10,"Short-term","Count (sum)","Positive","Involved",6
+"fixed",NA,"int_cat_ena_involALL_1",-0.0050556906581976,0.0181905278666858,-0.277929848723995,TRUE,"DY_forest_share",434,274,"Short-term","Count (sum)","Enabling","Involved",1
+"fixed",NA,"int_cat_ena_involALL_2",0.011710635948301,0.0275704567221434,0.424753063263386,TRUE,"DY_forest_share",173,132,"Short-term","Count (sum)","Enabling","Involved",2
+"fixed",NA,"int_cat_ena_involALL_3",0.0750277935770591,0.0377598462531477,1.98697296260322,TRUE,"DY_forest_share",57,51,"Short-term","Count (sum)","Enabling","Involved",3
+"fixed",NA,"int_cat_neg_involALL_1",-0.0233034406117104,0.0244292768661631,-0.953914466620495,TRUE,"DY_forest_share",382,144,"Short-term","Count (sum)","Negative","Involved",1
+"fixed",NA,"int_cat_neg_involALL_2",0.16622519369521,0.133548029822512,1.24468473189852,TRUE,"DY_forest_share",12,12,"Short-term","Count (sum)","Negative","Involved",2
+"fixed",NA,"int_cat_tot_chngeALL_1",0.0130590385552438,0.0166837313173586,0.782740881331294,TRUE,"DY_forest_share",418,237,"Short-term","Count (sum)","Total","Changed behavior",1
+"fixed",NA,"int_cat_tot_chngeALL_2",-0.0208244635985677,0.0282463854262403,-0.737243483876781,TRUE,"DY_forest_share",134,120,"Short-term","Count (sum)","Total","Changed behavior",2
+"fixed",NA,"int_cat_tot_chngeALL_3",0.112498306377762,0.0579058607946349,1.94277927715713,TRUE,"DY_forest_share",36,36,"Short-term","Count (sum)","Total","Changed behavior",3
+"fixed",NA,"int_cat_tot_chngeALL_4",0.00735565137278334,0.130671173549699,0.0562913087329527,TRUE,"DY_forest_share",9,9,"Short-term","Count (sum)","Total","Changed behavior",4
+"fixed",NA,"int_cat_pos_chngeALL_1",0.0261321981852817,0.0238869337444176,1.09399550670202,TRUE,"DY_forest_share",199,158,"Short-term","Count (sum)","Positive","Changed behavior",1
+"fixed",NA,"int_cat_pos_chngeALL_2",0.0137319860835519,0.0480382246098874,0.285855403588865,TRUE,"DY_forest_share",53,44,"Short-term","Count (sum)","Positive","Changed behavior",2
+"fixed",NA,"int_cat_pos_chngeALL_3",0.0283910126440254,0.150964835013065,0.188063747703684,TRUE,"DY_forest_share",7,7,"Short-term","Count (sum)","Positive","Changed behavior",3
+"fixed",NA,"int_cat_ena_chngeALL_1",-0.0154783482589017,0.0318081873427079,-0.486615225574937,TRUE,"DY_forest_share",153,134,"Short-term","Count (sum)","Enabling","Changed behavior",1
+"fixed",NA,"int_cat_ena_chngeALL_2",-0.0106320655338634,0.0670435178494922,-0.158584541427728,TRUE,"DY_forest_share",31,30,"Short-term","Count (sum)","Enabling","Changed behavior",2
+"fixed",NA,"int_cat_ena_chngeALL_3",0.334486137939524,0.0664402595797496,5.03438939063797,TRUE,"DY_forest_share",2,2,"Short-term","Count (sum)","Enabling","Changed behavior",3
+"fixed",NA,"int_cat_neg_chngeALL_1",0.0110093709184778,0.0205422556230727,0.535937782125166,TRUE,"DY_forest_share",266,156,"Short-term","Count (sum)","Negative","Changed behavior",1
+"fixed",NA,"int_avail_bin_CLE_1",0.0954729693889243,0.035928484332804,2.65730578848142,TRUE,"DY_forest_share",233,145,"Long-term","Binary (any)"," CLE","Available",1
+"fixed",NA,"int_avail_bin_EE_1",0.0399670334427429,0.0291716084966461,1.37006615344293,TRUE,"DY_forest_share",475,176,"Long-term","Binary (any)"," EE","Available",1
+"fixed",NA,"int_avail_bin_FE_1",0.176366455917741,0.0569992354110517,3.0941898544054,TRUE,"DY_forest_share",125,73,"Long-term","Binary (any)"," FE","Available",1
+"fixed",NA,"int_avail_bin_NCLE_1",0.071148054711078,0.0317917062304573,2.23794388999847,TRUE,"DY_forest_share",275,157,"Long-term","Binary (any)"," NCLE","Available",1
+"fixed",NA,"int_avail_bin_RFAC_1",0.0733371041035682,0.0531955223916551,1.37863302786313,TRUE,"DY_forest_share",155,71,"Long-term","Binary (any)"," RFAC","Available",1
+"fixed",NA,"int_avail_bin_TC_1",0.103001394007763,0.0389443902847997,2.64483262555955,TRUE,"DY_forest_share",204,48,"Long-term","Binary (any)"," TC","Available",1
+"fixed",NA,"int_avail_bin_OI_1",0.0644231093578376,0.0362264323918593,1.77834539876785,TRUE,"DY_forest_share",199,103,"Long-term","Binary (any)"," OI","Available",1
+"fixed",NA,"int_invol_bin_CLE_1",0.0426507744346744,0.0368454389567192,1.15755913465367,TRUE,"DY_forest_share",160,117,"Long-term","Binary (any)"," CLE","Involved",1
+"fixed",NA,"int_invol_bin_EE_1",0.0453326785812116,0.0304668411308442,1.48793497778532,TRUE,"DY_forest_share",218,162,"Long-term","Binary (any)"," EE","Involved",1
+"fixed",NA,"int_invol_bin_FE_1",0.101323337159821,0.0741788074812608,1.36593375655732,TRUE,"DY_forest_share",54,40,"Long-term","Binary (any)"," FE","Involved",1
+"fixed",NA,"int_invol_bin_NCLE_1",0.0880300821649034,0.0385905996755477,2.28112760374341,TRUE,"DY_forest_share",155,107,"Long-term","Binary (any)"," NCLE","Involved",1
+"fixed",NA,"int_invol_bin_RFAC_1",0.111238888188073,0.103579705054518,1.07394482470793,TRUE,"DY_forest_share",31,27,"Long-term","Binary (any)"," RFAC","Involved",1
+"fixed",NA,"int_invol_bin_TC_1",0.0857213532973018,0.0275353943622856,3.11313330651664,TRUE,"DY_forest_share",118,82,"Long-term","Binary (any)"," TC","Involved",1
+"fixed",NA,"int_invol_bin_OI_1",0.0553523716117948,0.0396177931473189,1.39715938760059,TRUE,"DY_forest_share",147,103,"Long-term","Binary (any)"," OI","Involved",1
+"fixed",NA,"int_chnge_bin_CLE_1",0.190550457569039,0.0638682861698808,2.98349100932819,TRUE,"DY_forest_share",59,45,"Long-term","Binary (any)"," CLE","Changed behavior",1
+"fixed",NA,"int_chnge_bin_EE_1",0.0968014164817058,0.0562726349532859,1.72022185494005,TRUE,"DY_forest_share",53,46,"Long-term","Binary (any)"," EE","Changed behavior",1
+"fixed",NA,"int_chnge_bin_FE_1",0.253754423737561,0.102627111548756,2.47258662850516,TRUE,"DY_forest_share",20,17,"Long-term","Binary (any)"," FE","Changed behavior",1
+"fixed",NA,"int_chnge_bin_NCLE_1",0.150621618400464,0.0486055520136916,3.09885624502393,TRUE,"DY_forest_share",77,66,"Long-term","Binary (any)"," NCLE","Changed behavior",1
+"fixed",NA,"int_chnge_bin_RFAC_1",0.0786259369625063,0.142555321510921,0.55154683900371,TRUE,"DY_forest_share",13,11,"Long-term","Binary (any)"," RFAC","Changed behavior",1
+"fixed",NA,"int_chnge_bin_TC_1",0.106024950742549,0.112937773721385,0.938790869068397,TRUE,"DY_forest_share",17,17,"Long-term","Binary (any)"," TC","Changed behavior",1
+"fixed",NA,"int_chnge_bin_OI_1",0.0722070607673068,0.0495725083261582,1.45659485883237,TRUE,"DY_forest_share",46,41,"Long-term","Binary (any)"," OI","Changed behavior",1
+"fixed",NA,"int_avail_sum_CLE_1",0.0173703415357248,0.0343717993188603,0.50536608149558,TRUE,"DY_forest_share",208,125,"Long-term","Count (sum)"," CLE","Available",1
+"fixed",NA,"int_avail_sum_EE_1",0.0335221246617668,0.0276613261271902,1.21187699055454,TRUE,"DY_forest_share",459,179,"Long-term","Count (sum)"," EE","Available",1
+"fixed",NA,"int_avail_sum_FE_1",0.176366455917741,0.0569992354110517,3.0941898544054,TRUE,"DY_forest_share",125,73,"Long-term","Count (sum)"," FE","Available",1
+"fixed",NA,"int_avail_sum_NCLE_1",0.0723136827764482,0.045606600333006,1.58559687081333,TRUE,"DY_forest_share",93,77,"Long-term","Count (sum)"," NCLE","Available",1
+"fixed",NA,"int_avail_sum_NCLE_2",0.0194298822887699,0.0388152859629378,0.500572952298283,TRUE,"DY_forest_share",136,85,"Long-term","Count (sum)"," NCLE","Available",2
+"fixed",NA,"int_avail_sum_NCLE_3",0.137886941119701,0.0861929312566993,1.59974767198771,TRUE,"DY_forest_share",45,34,"Long-term","Count (sum)"," NCLE","Available",3
+"fixed",NA,"int_avail_sum_NCLE_4",-0.0460896678042555,0.0436129226511405,-1.05678924966635,TRUE,"DY_forest_share",32,27,"Long-term","Count (sum)"," NCLE","Available",4
+"fixed",NA,"int_avail_sum_NCLE_5",0.00321283162697225,0.0373127565504929,0.0861054482164707,TRUE,"DY_forest_share",63,36,"Long-term","Count (sum)"," NCLE","Available",5
+"fixed",NA,"int_avail_sum_RFAC_1",0.0716679539262941,0.0549561727304013,1.30409288648749,TRUE,"DY_forest_share",154,68,"Long-term","Count (sum)"," RFAC","Available",1
+"fixed",NA,"int_avail_sum_TC_1",0.103001394007763,0.0389443902847997,2.64483262555955,TRUE,"DY_forest_share",204,48,"Long-term","Count (sum)"," TC","Available",1
+"fixed",NA,"int_avail_sum_OI_1",-0.00329680031737425,0.0363950481124477,-0.090583760383784,TRUE,"DY_forest_share",163,81,"Long-term","Count (sum)"," OI","Available",1
+"fixed",NA,"int_avail_sum_OI_2",0.044955208392844,0.0560903479100055,0.801478508654869,TRUE,"DY_forest_share",85,52,"Long-term","Count (sum)"," OI","Available",2
+"fixed",NA,"int_invol_sum_CLE_1",0.028113256719912,0.0390729221764694,0.719507401902038,TRUE,"DY_forest_share",153,112,"Long-term","Count (sum)"," CLE","Involved",1
+"fixed",NA,"int_invol_sum_EE_1",0.0776994588518455,0.0309052339113435,2.51411974666616,TRUE,"DY_forest_share",213,163,"Long-term","Count (sum)"," EE","Involved",1
+"fixed",NA,"int_invol_sum_FE_1",0.101323337159821,0.0741788074812608,1.36593375655732,TRUE,"DY_forest_share",54,40,"Long-term","Count (sum)"," FE","Involved",1
+"fixed",NA,"int_invol_sum_NCLE_1",0.13842461590947,0.0501240745081988,2.76163933733735,TRUE,"DY_forest_share",99,79,"Long-term","Count (sum)"," NCLE","Involved",1
+"fixed",NA,"int_invol_sum_NCLE_2",0.0376340850267958,0.0416050486673364,0.904555726582813,TRUE,"DY_forest_share",59,47,"Long-term","Count (sum)"," NCLE","Involved",2
+"fixed",NA,"int_invol_sum_NCLE_3",-0.0740146372084846,0.0552276654123109,-1.34017320225138,TRUE,"DY_forest_share",16,15,"Long-term","Count (sum)"," NCLE","Involved",3
+"fixed",NA,"int_invol_sum_NCLE_4",0.0446816255970842,0.0804615643203393,0.555316392050179,TRUE,"DY_forest_share",13,12,"Long-term","Count (sum)"," NCLE","Involved",4
+"fixed",NA,"int_invol_sum_NCLE_5",0.0286495396147593,0.0719299907355099,0.398297557413917,TRUE,"DY_forest_share",10,10,"Long-term","Count (sum)"," NCLE","Involved",5
+"fixed",NA,"int_invol_sum_RFAC_1",0.111238888188073,0.103579705054518,1.07394482470793,TRUE,"DY_forest_share",31,27,"Long-term","Count (sum)"," RFAC","Involved",1
+"fixed",NA,"int_invol_sum_TC_1",0.0857213532973018,0.0275353943622856,3.11313330651664,TRUE,"DY_forest_share",118,82,"Long-term","Count (sum)"," TC","Involved",1
+"fixed",NA,"int_invol_sum_OI_1",0.0122213666387056,0.0404820296110141,0.301896094542169,TRUE,"DY_forest_share",128,91,"Long-term","Count (sum)"," OI","Involved",1
+"fixed",NA,"int_invol_sum_OI_2",0.0455945601160639,0.0552247539494939,0.825618166769247,TRUE,"DY_forest_share",41,32,"Long-term","Count (sum)"," OI","Involved",2
+"fixed",NA,"int_chnge_sum_CLE_1",0.0782454281563531,0.0760405386680028,1.02899623709896,TRUE,"DY_forest_share",53,43,"Long-term","Count (sum)"," CLE","Changed behavior",1
+"fixed",NA,"int_chnge_sum_EE_1",0.0968014164817058,0.0562726349532859,1.72022185494005,TRUE,"DY_forest_share",53,46,"Long-term","Count (sum)"," EE","Changed behavior",1
+"fixed",NA,"int_chnge_sum_FE_1",0.253754423737561,0.102627111548756,2.47258662850516,TRUE,"DY_forest_share",20,17,"Long-term","Count (sum)"," FE","Changed behavior",1
+"fixed",NA,"int_chnge_sum_NCLE_1",0.190623101192219,0.0546070023185468,3.49081790060971,TRUE,"DY_forest_share",75,66,"Long-term","Count (sum)"," NCLE","Changed behavior",1
+"fixed",NA,"int_chnge_sum_NCLE_2",0.0837688141557502,0.0451405297185326,1.85573396409123,TRUE,"DY_forest_share",5,5,"Long-term","Count (sum)"," NCLE","Changed behavior",2
+"fixed",NA,"int_chnge_sum_RFAC_1",0.0786259369625063,0.142555321510921,0.55154683900371,TRUE,"DY_forest_share",13,11,"Long-term","Count (sum)"," RFAC","Changed behavior",1
+"fixed",NA,"int_chnge_sum_TC_1",0.106024950742549,0.112937773721385,0.938790869068397,TRUE,"DY_forest_share",17,17,"Long-term","Count (sum)"," TC","Changed behavior",1
+"fixed",NA,"int_chnge_sum_OI_1",0.113302408009396,0.056534976330909,2.0041117085858,TRUE,"DY_forest_share",45,40,"Long-term","Count (sum)"," OI","Changed behavior",1
+"fixed",NA,"int_cat_tot_availALL_1",-0.0746549906207765,0.0272210172818778,-2.74254962067408,TRUE,"DY_forest_share",386,191,"Long-term","Count (sum)","Total","Available",1
+"fixed",NA,"int_cat_tot_availALL_2",0.0270546908492634,0.0317402195159871,0.852378819738042,TRUE,"DY_forest_share",241,161,"Long-term","Count (sum)","Total","Available",2
+"fixed",NA,"int_cat_tot_availALL_3",-0.0439626718126607,0.0387789970227605,-1.13367222434499,TRUE,"DY_forest_share",161,116,"Long-term","Count (sum)","Total","Available",3
+"fixed",NA,"int_cat_tot_availALL_4",-0.0346273825394722,0.0406952801869032,-0.850894314535673,TRUE,"DY_forest_share",179,114,"Long-term","Count (sum)","Total","Available",4
+"fixed",NA,"int_cat_tot_availALL_5",0.00745232795835612,0.0304291005981309,0.244907927341562,TRUE,"DY_forest_share",193,159,"Long-term","Count (sum)","Total","Available",5
+"fixed",NA,"int_cat_tot_availALL_6",0.0522038925031098,0.0301944251265013,1.72892486889214,TRUE,"DY_forest_share",291,131,"Long-term","Count (sum)","Total","Available",6
+"fixed",NA,"int_cat_tot_availALL_7",0.0310807645651986,0.0326865372102017,0.950873577256697,TRUE,"DY_forest_share",210,89,"Long-term","Count (sum)","Total","Available",7
+"fixed",NA,"int_cat_tot_availALL_8",0.0641995607984841,0.0396773290916263,1.61804139210654,TRUE,"DY_forest_share",145,74,"Long-term","Count (sum)","Total","Available",8
+"fixed",NA,"int_cat_pos_availALL_1",-0.000397208691547147,0.0301721689186242,-0.0131647377627521,TRUE,"DY_forest_share",374,160,"Long-term","Count (sum)","Positive","Available",1
+"fixed",NA,"int_cat_pos_availALL_2",-0.0310267258073074,0.0258029883097376,-1.2024469970247,TRUE,"DY_forest_share",401,190,"Long-term","Count (sum)","Positive","Available",2
+"fixed",NA,"int_cat_pos_availALL_3",0.072412328824675,0.0274467438463321,2.63828486286368,TRUE,"DY_forest_share",242,162,"Long-term","Count (sum)","Positive","Available",3
+"fixed",NA,"int_cat_pos_availALL_4",0.0131537376988652,0.0420411699146757,0.312877537079992,TRUE,"DY_forest_share",40,36,"Long-term","Count (sum)","Positive","Available",4
+"fixed",NA,"int_cat_pos_availALL_6",-0.13280928273736,0.0891225731337593,-1.49018680753341,TRUE,"DY_forest_share",168,33,"Long-term","Count (sum)","Positive","Available",6
+"fixed",NA,"int_cat_ena_availALL_1",0.0104027768182428,0.0263161417691719,0.395300227118748,TRUE,"DY_forest_share",437,212,"Long-term","Count (sum)","Enabling","Available",1
+"fixed",NA,"int_cat_ena_availALL_2",-0.0562078884893843,0.0332938883385909,-1.68823442662399,TRUE,"DY_forest_share",312,166,"Long-term","Count (sum)","Enabling","Available",2
+"fixed",NA,"int_cat_ena_availALL_3",0.0557803343771029,0.0288424833084412,1.93396434629392,TRUE,"DY_forest_share",276,125,"Long-term","Count (sum)","Enabling","Available",3
+"fixed",NA,"int_cat_ena_availALL_4",0.348022769817868,0.0745065380531667,4.67103664875054,TRUE,"DY_forest_share",113,33,"Long-term","Count (sum)","Enabling","Available",4
+"fixed",NA,"int_cat_neg_availALL_1",0.0280298624238034,0.0275462184338038,1.01755754573579,TRUE,"DY_forest_share",440,135,"Long-term","Count (sum)","Negative","Available",1
+"fixed",NA,"int_cat_neg_availALL_2",0.0614240973094654,0.0646790862382403,0.949674784878912,TRUE,"DY_forest_share",217,55,"Long-term","Count (sum)","Negative","Available",2
+"fixed",NA,"int_cat_tot_involALL_1",-0.0069663433971121,0.0197093725332233,-0.353453332183417,TRUE,"DY_forest_share",470,282,"Long-term","Count (sum)","Total","Involved",1
+"fixed",NA,"int_cat_tot_involALL_2",-0.00201064435620766,0.0268128660500539,-0.0749880431451908,TRUE,"DY_forest_share",273,207,"Long-term","Count (sum)","Total","Involved",2
+"fixed",NA,"int_cat_tot_involALL_3",0.0319360611299207,0.0269629449154692,1.18444262042008,TRUE,"DY_forest_share",204,162,"Long-term","Count (sum)","Total","Involved",3
+"fixed",NA,"int_cat_tot_involALL_4",0.00416046932741136,0.0333330223562932,0.124815244262598,TRUE,"DY_forest_share",110,99,"Long-term","Count (sum)","Total","Involved",4
+"fixed",NA,"int_cat_tot_involALL_5",0.119511175609619,0.0452214325572193,2.6427994172542,TRUE,"DY_forest_share",73,64,"Long-term","Count (sum)","Total","Involved",5
+"fixed",NA,"int_cat_tot_involALL_6",0.0989570090242299,0.0602814162382491,1.64158401045397,TRUE,"DY_forest_share",40,37,"Long-term","Count (sum)","Total","Involved",6
+"fixed",NA,"int_cat_tot_involALL_7",0.0744379366813162,0.074166903623321,1.00365436663463,TRUE,"DY_forest_share",14,13,"Long-term","Count (sum)","Total","Involved",7
+"fixed",NA,"int_cat_pos_involALL_1",0.0101888647852561,0.022579699437131,0.4512400536431,TRUE,"DY_forest_share",367,253,"Long-term","Count (sum)","Positive","Involved",1
+"fixed",NA,"int_cat_pos_involALL_2",0.060251682032018,0.0383008860029755,1.57311457566118,TRUE,"DY_forest_share",141,124,"Long-term","Count (sum)","Positive","Involved",2
+"fixed",NA,"int_cat_pos_involALL_3",0.0624656325371926,0.0364549107362621,1.71350392239631,TRUE,"DY_forest_share",83,65,"Long-term","Count (sum)","Positive","Involved",3
+"fixed",NA,"int_cat_pos_involALL_4",0.0135945302052585,0.0536720628523949,0.253288759231134,TRUE,"DY_forest_share",32,32,"Long-term","Count (sum)","Positive","Involved",4
+"fixed",NA,"int_cat_pos_involALL_5",0.0460853750417061,0.0633325611543676,0.727672688451316,TRUE,"DY_forest_share",16,14,"Long-term","Count (sum)","Positive","Involved",5
+"fixed",NA,"int_cat_pos_involALL_6",0.0286495396147593,0.0719299907355099,0.398297557413917,TRUE,"DY_forest_share",10,10,"Long-term","Count (sum)","Positive","Involved",6
+"fixed",NA,"int_cat_ena_involALL_1",0.00813426305390675,0.0219976514971254,0.369778703647965,TRUE,"DY_forest_share",434,274,"Long-term","Count (sum)","Enabling","Involved",1
+"fixed",NA,"int_cat_ena_involALL_2",0.0301633320608212,0.0352039828924062,0.856815893616621,TRUE,"DY_forest_share",173,132,"Long-term","Count (sum)","Enabling","Involved",2
+"fixed",NA,"int_cat_ena_involALL_3",0.114012097222856,0.054688669492727,2.08474805257456,TRUE,"DY_forest_share",57,51,"Long-term","Count (sum)","Enabling","Involved",3
+"fixed",NA,"int_cat_neg_involALL_1",-0.0365092750052039,0.0303309931785951,-1.20369533533669,TRUE,"DY_forest_share",382,144,"Long-term","Count (sum)","Negative","Involved",1
+"fixed",NA,"int_cat_neg_involALL_2",0.343905109264208,0.173868803992375,1.97795752525732,TRUE,"DY_forest_share",12,12,"Long-term","Count (sum)","Negative","Involved",2
+"fixed",NA,"int_cat_tot_chngeALL_1",0.0141529184688109,0.0200046880461861,0.707480088474022,TRUE,"DY_forest_share",418,237,"Long-term","Count (sum)","Total","Changed behavior",1
+"fixed",NA,"int_cat_tot_chngeALL_2",0.0297280663869977,0.0371506840171213,0.800202396631439,TRUE,"DY_forest_share",134,120,"Long-term","Count (sum)","Total","Changed behavior",2
+"fixed",NA,"int_cat_tot_chngeALL_3",0.089934142009917,0.0583325487300766,1.54174888579052,TRUE,"DY_forest_share",36,36,"Long-term","Count (sum)","Total","Changed behavior",3
+"fixed",NA,"int_cat_tot_chngeALL_4",0.165920358612248,0.132457554505788,1.2526303934216,TRUE,"DY_forest_share",9,9,"Long-term","Count (sum)","Total","Changed behavior",4
+"fixed",NA,"int_cat_pos_chngeALL_1",0.00811965639817578,0.0284506438061948,0.28539446957639,TRUE,"DY_forest_share",199,158,"Long-term","Count (sum)","Positive","Changed behavior",1
+"fixed",NA,"int_cat_pos_chngeALL_2",0.0474143964286172,0.0576665362643902,0.82221682625832,TRUE,"DY_forest_share",53,44,"Long-term","Count (sum)","Positive","Changed behavior",2
+"fixed",NA,"int_cat_pos_chngeALL_3",0.00595031191010101,0.207025177247565,0.0287419723012023,TRUE,"DY_forest_share",7,7,"Long-term","Count (sum)","Positive","Changed behavior",3
+"fixed",NA,"int_cat_ena_chngeALL_1",-0.000480438720481031,0.0351511793276896,-0.0136677838317241,TRUE,"DY_forest_share",153,134,"Long-term","Count (sum)","Enabling","Changed behavior",1
+"fixed",NA,"int_cat_ena_chngeALL_2",0.167219622084896,0.0706455777716067,2.36702179187363,TRUE,"DY_forest_share",31,30,"Long-term","Count (sum)","Enabling","Changed behavior",2
+"fixed",NA,"int_cat_ena_chngeALL_3",0.481514707759932,0.222512338636691,2.16399104296922,TRUE,"DY_forest_share",2,2,"Long-term","Count (sum)","Enabling","Changed behavior",3
+"fixed",NA,"int_cat_neg_chngeALL_1",0.042135565982138,0.0234513808975123,1.79672003820498,TRUE,"DY_forest_share",266,156,"Long-term","Count (sum)","Negative","Changed behavior",1
+"fixed",NA,"int_avail_bin_CLE_1",0.114183905399012,0.0542829337719169,2.10349547205359,TRUE,"post_clearing_any",233,145,"Short-term","Binary (any)"," CLE","Available",1
+"fixed",NA,"int_avail_bin_EE_1",0.0197975019579928,0.0407368671152934,0.485984891817083,TRUE,"post_clearing_any",475,176,"Short-term","Binary (any)"," EE","Available",1
+"fixed",NA,"int_avail_bin_FE_1",-0.0208227172094296,0.0739181452311759,-0.281699671228321,TRUE,"post_clearing_any",125,73,"Short-term","Binary (any)"," FE","Available",1
+"fixed",NA,"int_avail_bin_NCLE_1",0.0602823679392203,0.0467769033345243,1.28872079256961,TRUE,"post_clearing_any",275,157,"Short-term","Binary (any)"," NCLE","Available",1
+"fixed",NA,"int_avail_bin_RFAC_1",-0.0587581828004029,0.0688919881851986,-0.85290299130933,TRUE,"post_clearing_any",155,71,"Short-term","Binary (any)"," RFAC","Available",1
+"fixed",NA,"int_avail_bin_TC_1",0.13904551025905,0.0649995169078807,2.13917759505981,TRUE,"post_clearing_any",204,48,"Short-term","Binary (any)"," TC","Available",1
+"fixed",NA,"int_avail_bin_OI_1",-0.0688792131461536,0.0710231621562618,-0.969813382775168,TRUE,"post_clearing_any",199,103,"Short-term","Binary (any)"," OI","Available",1
+"fixed",NA,"int_invol_bin_CLE_1",0.11053239953419,0.0579781952953964,1.90644774248374,TRUE,"post_clearing_any",160,117,"Short-term","Binary (any)"," CLE","Involved",1
+"fixed",NA,"int_invol_bin_EE_1",0.0668147630166777,0.0468801566463336,1.42522482424135,TRUE,"post_clearing_any",218,162,"Short-term","Binary (any)"," EE","Involved",1
+"fixed",NA,"int_invol_bin_FE_1",-0.110244355782297,0.102621728763269,-1.07427887944289,TRUE,"post_clearing_any",54,40,"Short-term","Binary (any)"," FE","Involved",1
+"fixed",NA,"int_invol_bin_NCLE_1",-0.0272156778904571,0.0552684023606925,-0.492427440055934,TRUE,"post_clearing_any",155,107,"Short-term","Binary (any)"," NCLE","Involved",1
+"fixed",NA,"int_invol_bin_RFAC_1",-0.198108857774914,0.115867755229985,-1.70978420511979,TRUE,"post_clearing_any",31,27,"Short-term","Binary (any)"," RFAC","Involved",1
+"fixed",NA,"int_invol_bin_TC_1",-0.0301896827810472,0.0540152932839681,-0.558909911352969,TRUE,"post_clearing_any",118,82,"Short-term","Binary (any)"," TC","Involved",1
+"fixed",NA,"int_invol_bin_OI_1",-0.147389038874437,0.0696139929139891,-2.11723293988526,TRUE,"post_clearing_any",147,103,"Short-term","Binary (any)"," OI","Involved",1
+"fixed",NA,"int_chnge_bin_CLE_1",0.164817809606182,0.0886840899691116,1.85848227865435,TRUE,"post_clearing_any",59,45,"Short-term","Binary (any)"," CLE","Changed behavior",1
+"fixed",NA,"int_chnge_bin_EE_1",0.143112672867961,0.0961594762447748,1.4882846543763,TRUE,"post_clearing_any",53,46,"Short-term","Binary (any)"," EE","Changed behavior",1
+"fixed",NA,"int_chnge_bin_FE_1",-0.1739683427982,0.161325552362248,-1.07836818316024,TRUE,"post_clearing_any",20,17,"Short-term","Binary (any)"," FE","Changed behavior",1
+"fixed",NA,"int_chnge_bin_NCLE_1",0.0356620266265692,0.0727081696423649,0.490481699676703,TRUE,"post_clearing_any",77,66,"Short-term","Binary (any)"," NCLE","Changed behavior",1
+"fixed",NA,"int_chnge_bin_RFAC_1",0.0456249999075682,0.189518650640137,0.240741477176313,TRUE,"post_clearing_any",13,11,"Short-term","Binary (any)"," RFAC","Changed behavior",1
+"fixed",NA,"int_chnge_bin_TC_1",-0.00547618785570579,0.164949458580144,-0.0331991866044535,TRUE,"post_clearing_any",17,17,"Short-term","Binary (any)"," TC","Changed behavior",1
+"fixed",NA,"int_chnge_bin_OI_1",0.0390051702423727,0.110314658787438,0.35358102604959,TRUE,"post_clearing_any",46,41,"Short-term","Binary (any)"," OI","Changed behavior",1
+"fixed",NA,"int_avail_sum_CLE_1",0.144237618348671,0.0602131416981794,2.39545079829363,TRUE,"post_clearing_any",208,125,"Short-term","Count (sum)"," CLE","Available",1
+"fixed",NA,"int_avail_sum_EE_1",-0.0252744729450702,0.0408793913322292,-0.618269306890191,TRUE,"post_clearing_any",459,179,"Short-term","Count (sum)"," EE","Available",1
+"fixed",NA,"int_avail_sum_FE_1",-0.0208227172094296,0.0739181452311759,-0.281699671228321,TRUE,"post_clearing_any",125,73,"Short-term","Count (sum)"," FE","Available",1
+"fixed",NA,"int_avail_sum_NCLE_1",-0.00244310149833955,0.0653019519644196,-0.0374123808683498,TRUE,"post_clearing_any",93,77,"Short-term","Count (sum)"," NCLE","Available",1
+"fixed",NA,"int_avail_sum_NCLE_2",0.0285713314442368,0.0562192571465783,0.508212539517267,TRUE,"post_clearing_any",136,85,"Short-term","Count (sum)"," NCLE","Available",2
+"fixed",NA,"int_avail_sum_NCLE_3",0.015222953540578,0.115006073977201,0.132366517820579,TRUE,"post_clearing_any",45,34,"Short-term","Count (sum)"," NCLE","Available",3
+"fixed",NA,"int_avail_sum_NCLE_4",0.0428240740740738,0.0581303047945844,0.736691029324578,TRUE,"post_clearing_any",32,27,"Short-term","Count (sum)"," NCLE","Available",4
+"fixed",NA,"int_avail_sum_NCLE_5",0.0873015873015815,0.0657381711358471,1.32801971507808,TRUE,"post_clearing_any",63,36,"Short-term","Count (sum)"," NCLE","Available",5
+"fixed",NA,"int_avail_sum_RFAC_1",-0.0689411849593898,0.0701604234276133,-0.982622133552523,TRUE,"post_clearing_any",154,68,"Short-term","Count (sum)"," RFAC","Available",1
+"fixed",NA,"int_avail_sum_TC_1",0.13904551025905,0.0649995169078807,2.13917759505981,TRUE,"post_clearing_any",204,48,"Short-term","Count (sum)"," TC","Available",1
+"fixed",NA,"int_avail_sum_OI_1",-0.138195328595914,0.0704785610159454,-1.96081370850702,TRUE,"post_clearing_any",163,81,"Short-term","Count (sum)"," OI","Available",1
+"fixed",NA,"int_avail_sum_OI_2",0.0305429864253397,0.0875898992016363,0.348704436284693,TRUE,"post_clearing_any",85,52,"Short-term","Count (sum)"," OI","Available",2
+"fixed",NA,"int_invol_sum_CLE_1",0.0817133734544539,0.0587664117024894,1.39047750385264,TRUE,"post_clearing_any",153,112,"Short-term","Count (sum)"," CLE","Involved",1
+"fixed",NA,"int_invol_sum_EE_1",0.0118458135645167,0.0478157580884167,0.247738696155616,TRUE,"post_clearing_any",213,163,"Short-term","Count (sum)"," EE","Involved",1
+"fixed",NA,"int_invol_sum_FE_1",-0.110244355782297,0.102621728763269,-1.07427887944289,TRUE,"post_clearing_any",54,40,"Short-term","Count (sum)"," FE","Involved",1
+"fixed",NA,"int_invol_sum_NCLE_1",0.0447355884159442,0.0618869879194007,0.722859358969063,TRUE,"post_clearing_any",99,79,"Short-term","Count (sum)"," NCLE","Involved",1
+"fixed",NA,"int_invol_sum_NCLE_2",0.00845178212509818,0.0703276811059193,0.120177176215566,TRUE,"post_clearing_any",59,47,"Short-term","Count (sum)"," NCLE","Involved",2
+"fixed",NA,"int_invol_sum_NCLE_3",0.133333333333333,0.0878652747870851,1.51747472088861,TRUE,"post_clearing_any",16,15,"Short-term","Count (sum)"," NCLE","Involved",3
+"fixed",NA,"int_invol_sum_NCLE_4",0.0494755243274196,0.134108914645321,0.368920473767668,TRUE,"post_clearing_any",13,12,"Short-term","Count (sum)"," NCLE","Involved",4
+"fixed",NA,"int_invol_sum_NCLE_5",-0.2,0.133333333333333,-1.5,TRUE,"post_clearing_any",10,10,"Short-term","Count (sum)"," NCLE","Involved",5
+"fixed",NA,"int_invol_sum_RFAC_1",-0.198108857774914,0.115867755229985,-1.70978420511979,TRUE,"post_clearing_any",31,27,"Short-term","Count (sum)"," RFAC","Involved",1
+"fixed",NA,"int_invol_sum_TC_1",-0.0301896827810472,0.0540152932839681,-0.558909911352969,TRUE,"post_clearing_any",118,82,"Short-term","Count (sum)"," TC","Involved",1
+"fixed",NA,"int_invol_sum_OI_1",-0.127608821875983,0.0734770400413718,-1.73671696361383,TRUE,"post_clearing_any",128,91,"Short-term","Count (sum)"," OI","Involved",1
+"fixed",NA,"int_invol_sum_OI_2",0.00914634146341418,0.115463712115584,0.0792139910958196,TRUE,"post_clearing_any",41,32,"Short-term","Count (sum)"," OI","Involved",2
+"fixed",NA,"int_chnge_sum_CLE_1",0.0250622388430084,0.089726954551599,0.279316722252018,TRUE,"post_clearing_any",53,43,"Short-term","Count (sum)"," CLE","Changed behavior",1
+"fixed",NA,"int_chnge_sum_EE_1",0.143112672867961,0.0961594762447748,1.4882846543763,TRUE,"post_clearing_any",53,46,"Short-term","Count (sum)"," EE","Changed behavior",1
+"fixed",NA,"int_chnge_sum_FE_1",-0.1739683427982,0.161325552362248,-1.07836818316024,TRUE,"post_clearing_any",20,17,"Short-term","Count (sum)"," FE","Changed behavior",1
+"fixed",NA,"int_chnge_sum_NCLE_1",-0.00676125693738946,0.0732023549555131,-0.0923639265635435,TRUE,"post_clearing_any",75,66,"Short-term","Count (sum)"," NCLE","Changed behavior",1
+"fixed",NA,"int_chnge_sum_NCLE_2",0.0476190467286537,0.189281970503673,0.251577298154394,TRUE,"post_clearing_any",5,5,"Short-term","Count (sum)"," NCLE","Changed behavior",2
+"fixed",NA,"int_chnge_sum_RFAC_1",0.0456249999075682,0.189518650640137,0.240741477176313,TRUE,"post_clearing_any",13,11,"Short-term","Count (sum)"," RFAC","Changed behavior",1
+"fixed",NA,"int_chnge_sum_TC_1",-0.00547618785570579,0.164949458580144,-0.0331991866044535,TRUE,"post_clearing_any",17,17,"Short-term","Count (sum)"," TC","Changed behavior",1
+"fixed",NA,"int_chnge_sum_OI_1",-0.0777701334195703,0.117673018075032,-0.660900304010066,TRUE,"post_clearing_any",45,40,"Short-term","Count (sum)"," OI","Changed behavior",1
+"fixed",NA,"int_cat_tot_availALL_1",0.0390704787972372,0.0363661946146782,1.07436258347106,TRUE,"post_clearing_any",386,191,"Short-term","Count (sum)","Total","Available",1
+"fixed",NA,"int_cat_tot_availALL_2",-0.181403753328041,0.0487782468836405,-3.71894778754096,TRUE,"post_clearing_any",241,161,"Short-term","Count (sum)","Total","Available",2
+"fixed",NA,"int_cat_tot_availALL_3",0.0395808715230494,0.0557034314516316,0.710564331344977,TRUE,"post_clearing_any",161,116,"Short-term","Count (sum)","Total","Available",3
+"fixed",NA,"int_cat_tot_availALL_4",0.0736181217141742,0.0418792913498559,1.75786455169872,TRUE,"post_clearing_any",179,114,"Short-term","Count (sum)","Total","Available",4
+"fixed",NA,"int_cat_tot_availALL_5",-0.0392029837579139,0.0444589755227933,-0.881778837612108,TRUE,"post_clearing_any",193,159,"Short-term","Count (sum)","Total","Available",5
+"fixed",NA,"int_cat_tot_availALL_6",-0.0558665047665199,0.0451909165106155,-1.2362330547865,TRUE,"post_clearing_any",291,131,"Short-term","Count (sum)","Total","Available",6
+"fixed",NA,"int_cat_tot_availALL_7",-0.112252142705125,0.065660987680069,-1.70957134017035,TRUE,"post_clearing_any",210,89,"Short-term","Count (sum)","Total","Available",7
+"fixed",NA,"int_cat_tot_availALL_8",0.0631444540928107,0.0640997133640865,0.985097292622044,TRUE,"post_clearing_any",145,74,"Short-term","Count (sum)","Total","Available",8
+"fixed",NA,"int_cat_pos_availALL_1",-0.0356789867383664,0.0388960894899496,-0.917289815151869,TRUE,"post_clearing_any",374,160,"Short-term","Count (sum)","Positive","Available",1
+"fixed",NA,"int_cat_pos_availALL_2",-0.0385685378854858,0.0370399379578283,-1.04126896566074,TRUE,"post_clearing_any",401,190,"Short-term","Count (sum)","Positive","Available",2
+"fixed",NA,"int_cat_pos_availALL_3",-0.119002114882919,0.0438216934715885,-2.71559826778655,TRUE,"post_clearing_any",242,162,"Short-term","Count (sum)","Positive","Available",3
+"fixed",NA,"int_cat_pos_availALL_4",0.0333333333333335,0.0575885530417412,0.578818733458591,TRUE,"post_clearing_any",40,36,"Short-term","Count (sum)","Positive","Available",4
+"fixed",NA,"int_cat_pos_availALL_6",0.208333333333347,0.204094819535204,1.02076737571191,TRUE,"post_clearing_any",168,33,"Short-term","Count (sum)","Positive","Available",6
+"fixed",NA,"int_cat_ena_availALL_1",-0.0459997717275929,0.0357905996637136,-1.28524730403525,TRUE,"post_clearing_any",437,212,"Short-term","Count (sum)","Enabling","Available",1
+"fixed",NA,"int_cat_ena_availALL_2",-0.104601973829752,0.0426631062141038,-2.45181336081834,TRUE,"post_clearing_any",312,166,"Short-term","Count (sum)","Enabling","Available",2
+"fixed",NA,"int_cat_ena_availALL_3",0.0155222236090721,0.0571596370933716,0.271559170043649,TRUE,"post_clearing_any",276,125,"Short-term","Count (sum)","Enabling","Available",3
+"fixed",NA,"int_cat_ena_availALL_4",-0.0180337482226505,0.101978446554973,-0.176838820671083,TRUE,"post_clearing_any",113,33,"Short-term","Count (sum)","Enabling","Available",4
+"fixed",NA,"int_cat_neg_availALL_1",0.0873738506091596,0.0367341523488657,2.37854544129307,TRUE,"post_clearing_any",440,135,"Short-term","Count (sum)","Negative","Available",1
+"fixed",NA,"int_cat_neg_availALL_2",-0.045035756469544,0.0751712570014645,-0.599108732060534,TRUE,"post_clearing_any",217,55,"Short-term","Count (sum)","Negative","Available",2
+"fixed",NA,"int_cat_tot_involALL_1",-0.0637613749798919,0.0318610642512745,-2.00123180057745,TRUE,"post_clearing_any",470,282,"Short-term","Count (sum)","Total","Involved",1
+"fixed",NA,"int_cat_tot_involALL_2",-0.00434467232403106,0.0407207210898679,-0.106694385751241,TRUE,"post_clearing_any",273,207,"Short-term","Count (sum)","Total","Involved",2
+"fixed",NA,"int_cat_tot_involALL_3",-0.00290572984136705,0.0451090091719897,-0.0644157319059748,TRUE,"post_clearing_any",204,162,"Short-term","Count (sum)","Total","Involved",3
+"fixed",NA,"int_cat_tot_involALL_4",-0.0557624288346839,0.0602781056694915,-0.92508595310597,TRUE,"post_clearing_any",110,99,"Short-term","Count (sum)","Total","Involved",4
+"fixed",NA,"int_cat_tot_involALL_5",0.0151149646336281,0.0759106456485266,0.199115216377052,TRUE,"post_clearing_any",73,64,"Short-term","Count (sum)","Total","Involved",5
+"fixed",NA,"int_cat_tot_involALL_6",0.102015802424856,0.110041593617464,0.927065840026741,TRUE,"post_clearing_any",40,37,"Short-term","Count (sum)","Total","Involved",6
+"fixed",NA,"int_cat_tot_involALL_7",-0.146448996113291,0.121602708851268,-1.20432346858664,TRUE,"post_clearing_any",14,13,"Short-term","Count (sum)","Total","Involved",7
+"fixed",NA,"int_cat_pos_involALL_1",-0.0233486818878121,0.0337689506144722,-0.691424562000031,TRUE,"post_clearing_any",367,253,"Short-term","Count (sum)","Positive","Involved",1
+"fixed",NA,"int_cat_pos_involALL_2",-0.00387149203588357,0.0535529770594962,-0.0722927510002371,TRUE,"post_clearing_any",141,124,"Short-term","Count (sum)","Positive","Involved",2
+"fixed",NA,"int_cat_pos_involALL_3",-0.0442397676904851,0.0591265496185587,-0.748221703716651,TRUE,"post_clearing_any",83,65,"Short-term","Count (sum)","Positive","Involved",3
+"fixed",NA,"int_cat_pos_involALL_4",-0.15628869470257,0.100244679472586,-1.55907221734706,TRUE,"post_clearing_any",32,32,"Short-term","Count (sum)","Positive","Involved",4
+"fixed",NA,"int_cat_pos_involALL_5",-0.11111111112095,0.109361220471628,-1.01600101609853,TRUE,"post_clearing_any",16,14,"Short-term","Count (sum)","Positive","Involved",5
+"fixed",NA,"int_cat_pos_involALL_6",-0.2,0.133333333333333,-1.5,TRUE,"post_clearing_any",10,10,"Short-term","Count (sum)","Positive","Involved",6
+"fixed",NA,"int_cat_ena_involALL_1",-0.00266771585160457,0.0340494491212389,-0.0783482822910206,TRUE,"post_clearing_any",434,274,"Short-term","Count (sum)","Enabling","Involved",1
+"fixed",NA,"int_cat_ena_involALL_2",-0.09548254524901,0.0538261888998402,-1.77390499310074,TRUE,"post_clearing_any",173,132,"Short-term","Count (sum)","Enabling","Involved",2
+"fixed",NA,"int_cat_ena_involALL_3",0.0198534002779348,0.100565770200512,0.197417075793784,TRUE,"post_clearing_any",57,51,"Short-term","Count (sum)","Enabling","Involved",3
+"fixed",NA,"int_cat_neg_involALL_1",0.0666300419764952,0.0501482970018145,1.32866011330523,TRUE,"post_clearing_any",382,144,"Short-term","Count (sum)","Negative","Involved",1
+"fixed",NA,"int_cat_neg_involALL_2",0,0.154538895909821,0,TRUE,"post_clearing_any",12,12,"Short-term","Count (sum)","Negative","Involved",2
+"fixed",NA,"int_cat_tot_chngeALL_1",0.0207266005068033,0.0360768119997062,0.574513083555499,TRUE,"post_clearing_any",418,237,"Short-term","Count (sum)","Total","Changed behavior",1
+"fixed",NA,"int_cat_tot_chngeALL_2",0.00706518696286429,0.0562301318806859,0.125647703936669,TRUE,"post_clearing_any",134,120,"Short-term","Count (sum)","Total","Changed behavior",2
+"fixed",NA,"int_cat_tot_chngeALL_3",0.0821988151935019,0.0966617899671908,0.850375471232242,TRUE,"post_clearing_any",36,36,"Short-term","Count (sum)","Total","Changed behavior",3
+"fixed",NA,"int_cat_tot_chngeALL_4",0.0834780332895868,0.17053305213373,0.489512339368232,TRUE,"post_clearing_any",9,9,"Short-term","Count (sum)","Total","Changed behavior",4
+"fixed",NA,"int_cat_pos_chngeALL_1",-0.0133579185131346,0.0431842077934754,-0.309324153334423,TRUE,"post_clearing_any",199,158,"Short-term","Count (sum)","Positive","Changed behavior",1
+"fixed",NA,"int_cat_pos_chngeALL_2",-0.0221841708386871,0.084774243117624,-0.261685271644438,TRUE,"post_clearing_any",53,44,"Short-term","Count (sum)","Positive","Changed behavior",2
+"fixed",NA,"int_cat_pos_chngeALL_3",0.285714285714286,0.247435829652697,1.15470053837925,TRUE,"post_clearing_any",7,7,"Short-term","Count (sum)","Positive","Changed behavior",3
+"fixed",NA,"int_cat_ena_chngeALL_1",0.00379432315050005,0.0526721399391131,0.0720366241980322,TRUE,"post_clearing_any",153,134,"Short-term","Count (sum)","Enabling","Changed behavior",1
+"fixed",NA,"int_cat_ena_chngeALL_2",-0.216230179051249,0.117355175283493,-1.84252785212842,TRUE,"post_clearing_any",31,30,"Short-term","Count (sum)","Enabling","Changed behavior",2
+"fixed",NA,"int_cat_ena_chngeALL_3",0,0.707106781186548,0,TRUE,"post_clearing_any",2,2,"Short-term","Count (sum)","Enabling","Changed behavior",3
+"fixed",NA,"int_cat_neg_chngeALL_1",0.0338549300960824,0.0498777131097392,0.678758667655751,TRUE,"post_clearing_any",266,156,"Short-term","Count (sum)","Negative","Changed behavior",1
+"fixed",NA,"int_avail_bin_CLE_1",0.0458741471099999,0.0527206015598277,0.870137019547124,TRUE,"post_clearing_any",233,145,"Long-term","Binary (any)"," CLE","Available",1
+"fixed",NA,"int_avail_bin_EE_1",-0.0124955081986471,0.0406409248843731,-0.307461216352675,TRUE,"post_clearing_any",475,176,"Long-term","Binary (any)"," EE","Available",1
+"fixed",NA,"int_avail_bin_FE_1",0.060896780804683,0.0733286969298286,0.830463152276628,TRUE,"post_clearing_any",125,73,"Long-term","Binary (any)"," FE","Available",1
+"fixed",NA,"int_avail_bin_NCLE_1",0.0213015834757892,0.0446467138116635,0.477114252252633,TRUE,"post_clearing_any",275,157,"Long-term","Binary (any)"," NCLE","Available",1
+"fixed",NA,"int_avail_bin_RFAC_1",-0.035077495246907,0.0674997301793225,-0.519668673544601,TRUE,"post_clearing_any",155,71,"Long-term","Binary (any)"," RFAC","Available",1
+"fixed",NA,"int_avail_bin_TC_1",-0.00876098137107483,0.0642103223378317,-0.13644194659202,TRUE,"post_clearing_any",204,48,"Long-term","Binary (any)"," TC","Available",1
+"fixed",NA,"int_avail_bin_OI_1",-0.0686155052244381,0.0644431341174048,-1.06474500603015,TRUE,"post_clearing_any",199,103,"Long-term","Binary (any)"," OI","Available",1
+"fixed",NA,"int_invol_bin_CLE_1",0.0810182589502,0.0549366510054006,1.47475787962094,TRUE,"post_clearing_any",160,117,"Long-term","Binary (any)"," CLE","Involved",1
+"fixed",NA,"int_invol_bin_EE_1",0.1074080021687,0.0470443113642059,2.2831241239174,TRUE,"post_clearing_any",218,162,"Long-term","Binary (any)"," EE","Involved",1
+"fixed",NA,"int_invol_bin_FE_1",0.0422745340914741,0.103541466592628,0.408286027643382,TRUE,"post_clearing_any",54,40,"Long-term","Binary (any)"," FE","Involved",1
+"fixed",NA,"int_invol_bin_NCLE_1",-0.0148726069955002,0.0518675402164136,-0.286742092134026,TRUE,"post_clearing_any",155,107,"Long-term","Binary (any)"," NCLE","Involved",1
+"fixed",NA,"int_invol_bin_RFAC_1",-0.00161096360609979,0.10361936491481,-0.0155469357240728,TRUE,"post_clearing_any",31,27,"Long-term","Binary (any)"," RFAC","Involved",1
+"fixed",NA,"int_invol_bin_TC_1",0.0780106305193142,0.0599776844932274,1.30066092378279,TRUE,"post_clearing_any",118,82,"Long-term","Binary (any)"," TC","Involved",1
+"fixed",NA,"int_invol_bin_OI_1",-0.14629908269411,0.0646360201798738,-2.26342962154815,TRUE,"post_clearing_any",147,103,"Long-term","Binary (any)"," OI","Involved",1
+"fixed",NA,"int_chnge_bin_CLE_1",0.0394224997668597,0.0784820859594767,0.502312079054768,TRUE,"post_clearing_any",59,45,"Long-term","Binary (any)"," CLE","Changed behavior",1
+"fixed",NA,"int_chnge_bin_EE_1",-0.0398222801571416,0.0766654724048651,-0.519429136845892,TRUE,"post_clearing_any",53,46,"Long-term","Binary (any)"," EE","Changed behavior",1
+"fixed",NA,"int_chnge_bin_FE_1",-0.138235294117647,0.167909274516362,-0.823273726337116,TRUE,"post_clearing_any",20,17,"Long-term","Binary (any)"," FE","Changed behavior",1
+"fixed",NA,"int_chnge_bin_NCLE_1",0.0548630835831573,0.0698210628557429,0.78576694967405,TRUE,"post_clearing_any",77,66,"Long-term","Binary (any)"," NCLE","Changed behavior",1
+"fixed",NA,"int_chnge_bin_RFAC_1",0.213548074000733,0.184121488179542,1.15982157276774,TRUE,"post_clearing_any",13,11,"Long-term","Binary (any)"," RFAC","Changed behavior",1
+"fixed",NA,"int_chnge_bin_TC_1",0.239137075183148,0.160622170454063,1.48881735632841,TRUE,"post_clearing_any",17,17,"Long-term","Binary (any)"," TC","Changed behavior",1
+"fixed",NA,"int_chnge_bin_OI_1",-0.191654457728265,0.099018732824229,-1.93553737017092,TRUE,"post_clearing_any",46,41,"Long-term","Binary (any)"," OI","Changed behavior",1
+"fixed",NA,"int_avail_sum_CLE_1",0.124195415465368,0.0595858090309574,2.08431197772011,TRUE,"post_clearing_any",208,125,"Long-term","Count (sum)"," CLE","Available",1
+"fixed",NA,"int_avail_sum_EE_1",-0.0378259944400405,0.0405649429400107,-0.932479912420418,TRUE,"post_clearing_any",459,179,"Long-term","Count (sum)"," EE","Available",1
+"fixed",NA,"int_avail_sum_FE_1",0.060896780804683,0.0733286969298286,0.830463152276628,TRUE,"post_clearing_any",125,73,"Long-term","Count (sum)"," FE","Available",1
+"fixed",NA,"int_avail_sum_NCLE_1",-0.100807852832947,0.053650387964318,-1.87897714551464,TRUE,"post_clearing_any",93,77,"Long-term","Count (sum)"," NCLE","Available",1
+"fixed",NA,"int_avail_sum_NCLE_2",-0.00403423867413034,0.0548306008222405,-0.0735764083127458,TRUE,"post_clearing_any",136,85,"Long-term","Count (sum)"," NCLE","Available",2
+"fixed",NA,"int_avail_sum_NCLE_3",0.165359477124183,0.111937662735004,1.47724611255862,TRUE,"post_clearing_any",45,34,"Long-term","Count (sum)"," NCLE","Available",3
+"fixed",NA,"int_avail_sum_NCLE_4",0.126578015782368,0.0843608612461013,1.50043531932549,TRUE,"post_clearing_any",32,27,"Long-term","Count (sum)"," NCLE","Available",4
+"fixed",NA,"int_avail_sum_NCLE_5",0.0551780202809454,0.0657804068202641,0.838821511574286,TRUE,"post_clearing_any",63,36,"Long-term","Count (sum)"," NCLE","Available",5
+"fixed",NA,"int_avail_sum_RFAC_1",0.00182955707020907,0.0685384966336783,0.026693860531952,TRUE,"post_clearing_any",154,68,"Long-term","Count (sum)"," RFAC","Available",1
+"fixed",NA,"int_avail_sum_TC_1",-0.00876098137107483,0.0642103223378317,-0.13644194659202,TRUE,"post_clearing_any",204,48,"Long-term","Count (sum)"," TC","Available",1
+"fixed",NA,"int_avail_sum_OI_1",0.0265762511810548,0.0624189236859937,0.425772339727452,TRUE,"post_clearing_any",163,81,"Long-term","Count (sum)"," OI","Available",1
+"fixed",NA,"int_avail_sum_OI_2",-0.24355857609306,0.117866695985008,-2.06639012027654,TRUE,"post_clearing_any",85,52,"Long-term","Count (sum)"," OI","Available",2
+"fixed",NA,"int_invol_sum_CLE_1",0.167254326986644,0.0570908883448925,2.92961507230789,TRUE,"post_clearing_any",153,112,"Long-term","Count (sum)"," CLE","Involved",1
+"fixed",NA,"int_invol_sum_EE_1",0.0836501901921886,0.0469822541222075,1.78046353362703,TRUE,"post_clearing_any",213,163,"Long-term","Count (sum)"," EE","Involved",1
+"fixed",NA,"int_invol_sum_FE_1",0.0422745340914741,0.103541466592628,0.408286027643382,TRUE,"post_clearing_any",54,40,"Long-term","Count (sum)"," FE","Involved",1
+"fixed",NA,"int_invol_sum_NCLE_1",-0.0610180591689671,0.0639693126721142,-0.953864542545982,TRUE,"post_clearing_any",99,79,"Long-term","Count (sum)"," NCLE","Involved",1
+"fixed",NA,"int_invol_sum_NCLE_2",0.013672323228239,0.0658330969449585,0.207681604887434,TRUE,"post_clearing_any",59,47,"Long-term","Count (sum)"," NCLE","Involved",2
+"fixed",NA,"int_invol_sum_NCLE_3",0.108673469186427,0.0989486854448336,1.09828108072255,TRUE,"post_clearing_any",16,15,"Long-term","Count (sum)"," NCLE","Involved",3
+"fixed",NA,"int_invol_sum_NCLE_4",-0.0187062937706087,0.153731580828706,-0.121681528738406,TRUE,"post_clearing_any",13,12,"Long-term","Count (sum)"," NCLE","Involved",4
+"fixed",NA,"int_invol_sum_NCLE_5",0.0196077549200186,0.123700464438858,0.158509953935623,TRUE,"post_clearing_any",10,10,"Long-term","Count (sum)"," NCLE","Involved",5
+"fixed",NA,"int_invol_sum_RFAC_1",-0.00161096360609979,0.10361936491481,-0.0155469357240728,TRUE,"post_clearing_any",31,27,"Long-term","Count (sum)"," RFAC","Involved",1
+"fixed",NA,"int_invol_sum_TC_1",0.0780106305193142,0.0599776844932274,1.30066092378279,TRUE,"post_clearing_any",118,82,"Long-term","Count (sum)"," TC","Involved",1
+"fixed",NA,"int_invol_sum_OI_1",-0.174259620549309,0.0692807711572796,-2.51526675639492,TRUE,"post_clearing_any",128,91,"Long-term","Count (sum)"," OI","Involved",1
+"fixed",NA,"int_invol_sum_OI_2",0.0152439024390242,0.116288463398893,0.131086971084436,TRUE,"post_clearing_any",41,32,"Long-term","Count (sum)"," OI","Involved",2
+"fixed",NA,"int_chnge_sum_CLE_1",0.177303346866916,0.0874922329374394,2.02650384970395,TRUE,"post_clearing_any",53,43,"Long-term","Count (sum)"," CLE","Changed behavior",1
+"fixed",NA,"int_chnge_sum_EE_1",-0.0398222801571416,0.0766654724048651,-0.519429136845892,TRUE,"post_clearing_any",53,46,"Long-term","Count (sum)"," EE","Changed behavior",1
+"fixed",NA,"int_chnge_sum_FE_1",-0.138235294117647,0.167909274516362,-0.823273726337116,TRUE,"post_clearing_any",20,17,"Long-term","Count (sum)"," FE","Changed behavior",1
+"fixed",NA,"int_chnge_sum_NCLE_1",0.0676662292250169,0.0668750381324748,1.01183088809572,TRUE,"post_clearing_any",75,66,"Long-term","Count (sum)"," NCLE","Changed behavior",1
+"fixed",NA,"int_chnge_sum_NCLE_2",0.0476190467292118,0.189281970503741,0.251577298157251,TRUE,"post_clearing_any",5,5,"Long-term","Count (sum)"," NCLE","Changed behavior",2
+"fixed",NA,"int_chnge_sum_RFAC_1",0.213548074000733,0.184121488179542,1.15982157276774,TRUE,"post_clearing_any",13,11,"Long-term","Count (sum)"," RFAC","Changed behavior",1
+"fixed",NA,"int_chnge_sum_TC_1",0.239137075183148,0.160622170454063,1.48881735632841,TRUE,"post_clearing_any",17,17,"Long-term","Count (sum)"," TC","Changed behavior",1
+"fixed",NA,"int_chnge_sum_OI_1",-0.12814969346545,0.104412740006355,-1.22733771240607,TRUE,"post_clearing_any",45,40,"Long-term","Count (sum)"," OI","Changed behavior",1
+"fixed",NA,"int_cat_tot_availALL_1",-0.00558070906019993,0.0354351185498655,-0.157490909825702,TRUE,"post_clearing_any",386,191,"Long-term","Count (sum)","Total","Available",1
+"fixed",NA,"int_cat_tot_availALL_2",-0.0532167167615174,0.0458585946239806,-1.16045241241843,TRUE,"post_clearing_any",241,161,"Long-term","Count (sum)","Total","Available",2
+"fixed",NA,"int_cat_tot_availALL_3",-0.0439009825310833,0.0522910173648985,-0.839551126434056,TRUE,"post_clearing_any",161,116,"Long-term","Count (sum)","Total","Available",3
+"fixed",NA,"int_cat_tot_availALL_4",0.0456415414456478,0.0426088887753987,1.07117417884881,TRUE,"post_clearing_any",179,114,"Long-term","Count (sum)","Total","Available",4
+"fixed",NA,"int_cat_tot_availALL_5",0.00842731410338458,0.0429512470215272,0.196206505928939,TRUE,"post_clearing_any",193,159,"Long-term","Count (sum)","Total","Available",5
+"fixed",NA,"int_cat_tot_availALL_6",-0.0415852517081106,0.0450496242563232,-0.923098747094958,TRUE,"post_clearing_any",291,131,"Long-term","Count (sum)","Total","Available",6
+"fixed",NA,"int_cat_tot_availALL_7",-0.0826303728322865,0.0652200976331162,-1.26694647556507,TRUE,"post_clearing_any",210,89,"Long-term","Count (sum)","Total","Available",7
+"fixed",NA,"int_cat_tot_availALL_8",0.0592029634743997,0.0644192472754132,0.919026005089563,TRUE,"post_clearing_any",145,74,"Long-term","Count (sum)","Total","Available",8
+"fixed",NA,"int_cat_pos_availALL_1",-0.061041677682817,0.0389605310298056,-1.56675681951355,TRUE,"post_clearing_any",374,160,"Long-term","Count (sum)","Positive","Available",1
+"fixed",NA,"int_cat_pos_availALL_2",-0.0686127813841124,0.035911084856104,-1.91062959136557,TRUE,"post_clearing_any",401,190,"Long-term","Count (sum)","Positive","Available",2
+"fixed",NA,"int_cat_pos_availALL_3",-0.0466580701071193,0.0430239800406547,-1.08446661752424,TRUE,"post_clearing_any",242,162,"Long-term","Count (sum)","Positive","Available",3
+"fixed",NA,"int_cat_pos_availALL_4",0.0241138386506185,0.0666018418378781,0.362059636568555,TRUE,"post_clearing_any",40,36,"Long-term","Count (sum)","Positive","Available",4
+"fixed",NA,"int_cat_pos_availALL_6",0.528679653679654,0.0601713559704485,8.78623466520017,TRUE,"post_clearing_any",168,33,"Long-term","Count (sum)","Positive","Available",6
+"fixed",NA,"int_cat_ena_availALL_1",0.0104531016456405,0.034203966043034,0.305610806433642,TRUE,"post_clearing_any",437,212,"Long-term","Count (sum)","Enabling","Available",1
+"fixed",NA,"int_cat_ena_availALL_2",-0.109484819583196,0.0409417030985221,-2.67416378160262,TRUE,"post_clearing_any",312,166,"Long-term","Count (sum)","Enabling","Available",2
+"fixed",NA,"int_cat_ena_availALL_3",-0.0588709874261597,0.0579142592862986,-1.01651973368306,TRUE,"post_clearing_any",276,125,"Long-term","Count (sum)","Enabling","Available",3
+"fixed",NA,"int_cat_ena_availALL_4",-0.162564233434736,0.127508147361638,-1.27493212628737,TRUE,"post_clearing_any",113,33,"Long-term","Count (sum)","Enabling","Available",4
+"fixed",NA,"int_cat_neg_availALL_1",0.0156485807691486,0.0364130637728982,0.429751829363934,TRUE,"post_clearing_any",440,135,"Long-term","Count (sum)","Negative","Available",1
+"fixed",NA,"int_cat_neg_availALL_2",0.0381893948398801,0.0749415138966627,0.509589316444017,TRUE,"post_clearing_any",217,55,"Long-term","Count (sum)","Negative","Available",2
+"fixed",NA,"int_cat_tot_involALL_1",-0.0627908056519973,0.0309785699114646,-2.02691104952394,TRUE,"post_clearing_any",470,282,"Long-term","Count (sum)","Total","Involved",1
+"fixed",NA,"int_cat_tot_involALL_2",-0.027311377296563,0.0393947464810698,-0.69327460476708,TRUE,"post_clearing_any",273,207,"Long-term","Count (sum)","Total","Involved",2
+"fixed",NA,"int_cat_tot_involALL_3",-0.0173866755215535,0.0435629230319866,-0.39911636574036,TRUE,"post_clearing_any",204,162,"Long-term","Count (sum)","Total","Involved",3
+"fixed",NA,"int_cat_tot_involALL_4",0.043509970225375,0.0587965750857755,0.740008583185337,TRUE,"post_clearing_any",110,99,"Long-term","Count (sum)","Total","Involved",4
+"fixed",NA,"int_cat_tot_involALL_5",0.132270022312589,0.0661231627092579,2.00035837508526,TRUE,"post_clearing_any",73,64,"Long-term","Count (sum)","Total","Involved",5
+"fixed",NA,"int_cat_tot_involALL_6",-0.136367769290983,0.0960454531509184,-1.41982535161457,TRUE,"post_clearing_any",40,37,"Long-term","Count (sum)","Total","Involved",6
+"fixed",NA,"int_cat_tot_involALL_7",0.0196146435309949,0.1259965775734,0.155676002545134,TRUE,"post_clearing_any",14,13,"Long-term","Count (sum)","Total","Involved",7
+"fixed",NA,"int_cat_pos_involALL_1",-0.0233841376306144,0.033325762250471,-0.701683504036998,TRUE,"post_clearing_any",367,253,"Long-term","Count (sum)","Positive","Involved",1
+"fixed",NA,"int_cat_pos_involALL_2",-0.0203561384035061,0.0525230275108334,-0.38756597569147,TRUE,"post_clearing_any",141,124,"Long-term","Count (sum)","Positive","Involved",2
+"fixed",NA,"int_cat_pos_involALL_3",0.0607136448044872,0.0561235110571518,1.08178628993224,TRUE,"post_clearing_any",83,65,"Long-term","Count (sum)","Positive","Involved",3
+"fixed",NA,"int_cat_pos_involALL_4",-0.0475451601221817,0.0862790086706566,-0.551062892987917,TRUE,"post_clearing_any",32,32,"Long-term","Count (sum)","Positive","Involved",4
+"fixed",NA,"int_cat_pos_involALL_5",0.0382716037449776,0.11140607278111,0.343532473496066,TRUE,"post_clearing_any",16,14,"Long-term","Count (sum)","Positive","Involved",5
+"fixed",NA,"int_cat_pos_involALL_6",0.0196077549200186,0.123700464438858,0.158509953935623,TRUE,"post_clearing_any",10,10,"Long-term","Count (sum)","Positive","Involved",6
+"fixed",NA,"int_cat_ena_involALL_1",-0.032053347194764,0.0319734160409449,-1.00249992536665,TRUE,"post_clearing_any",434,274,"Long-term","Count (sum)","Enabling","Involved",1
+"fixed",NA,"int_cat_ena_involALL_2",0.0266976814288629,0.0530871404976626,0.502902985140788,TRUE,"post_clearing_any",173,132,"Long-term","Count (sum)","Enabling","Involved",2
+"fixed",NA,"int_cat_ena_involALL_3",-0.0400153736521096,0.101693177994427,-0.393491229611316,TRUE,"post_clearing_any",57,51,"Long-term","Count (sum)","Enabling","Involved",3
+"fixed",NA,"int_cat_neg_involALL_1",-0.0303082777544626,0.0491359494557734,-0.616824913126848,TRUE,"post_clearing_any",382,144,"Long-term","Count (sum)","Negative","Involved",1
+"fixed",NA,"int_cat_neg_involALL_2",-0.416666666666667,0.148837094879382,-2.79948131884954,TRUE,"post_clearing_any",12,12,"Long-term","Count (sum)","Negative","Involved",2
+"fixed",NA,"int_cat_tot_chngeALL_1",-0.0112951505405726,0.034974423652481,-0.322954586837668,TRUE,"post_clearing_any",418,237,"Long-term","Count (sum)","Total","Changed behavior",1
+"fixed",NA,"int_cat_tot_chngeALL_2",-0.0266408812485334,0.053686951288685,-0.49622637547959,TRUE,"post_clearing_any",134,120,"Long-term","Count (sum)","Total","Changed behavior",2
+"fixed",NA,"int_cat_tot_chngeALL_3",-0.033238491648789,0.090523099232127,-0.367182431122425,TRUE,"post_clearing_any",36,36,"Long-term","Count (sum)","Total","Changed behavior",3
+"fixed",NA,"int_cat_tot_chngeALL_4",-0.259204170226788,0.157513749736756,-1.64559710285598,TRUE,"post_clearing_any",9,9,"Long-term","Count (sum)","Total","Changed behavior",4
+"fixed",NA,"int_cat_pos_chngeALL_1",-0.0237337317682889,0.0418232842277097,-0.567476519516472,TRUE,"post_clearing_any",199,158,"Long-term","Count (sum)","Positive","Changed behavior",1
+"fixed",NA,"int_cat_pos_chngeALL_2",0.00612968452267,0.0794342123872176,0.0771668068261274,TRUE,"post_clearing_any",53,44,"Long-term","Count (sum)","Positive","Changed behavior",2
+"fixed",NA,"int_cat_pos_chngeALL_3",0.142857142857143,0.233284737407922,0.612372435695795,TRUE,"post_clearing_any",7,7,"Long-term","Count (sum)","Positive","Changed behavior",3
+"fixed",NA,"int_cat_ena_chngeALL_1",-0.0607372124430876,0.0517058203559681,-1.1746687708452,TRUE,"post_clearing_any",153,134,"Long-term","Count (sum)","Enabling","Changed behavior",1
+"fixed",NA,"int_cat_ena_chngeALL_2",-0.18038333989249,0.121686446020413,-1.48236180603245,TRUE,"post_clearing_any",31,30,"Long-term","Count (sum)","Enabling","Changed behavior",2
+"fixed",NA,"int_cat_ena_chngeALL_3",0.5,0.499916207089462,1.00016761391079,TRUE,"post_clearing_any",2,2,"Long-term","Count (sum)","Enabling","Changed behavior",3
+"fixed",NA,"int_cat_neg_chngeALL_1",0.0447904773322611,0.0493299975201139,0.907976476463397,TRUE,"post_clearing_any",266,156,"Long-term","Count (sum)","Negative","Changed behavior",1
