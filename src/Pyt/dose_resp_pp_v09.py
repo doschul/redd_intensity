@@ -210,34 +210,18 @@ def data_generating(rng_key, funcForm="linear", N=1000, K=5, V=20, P=10, C=5):
     # --- placement D
     D = dist.Bernoulli(0.5).sample(key=kD, sample_shape=(N,)).astype(jnp.float32)
 
-    # --- Hierarchical NB dosage model truths
-    # gamma varies by country (vector per country)
+    # --- Simplified NB dosage model truths (no country/project random effects)
     gamma_global_true = jnp.array([0.9, -0.05, 0.04, 0.03, -0.02])
-    sigma_gamma_c_true = 0.10
-    gamma_off_true = dist.Normal(0., 1.).sample(kgc, (C, K))
-    gamma_c_true = gamma_global_true + sigma_gamma_c_true * gamma_off_true     # (C, K)
-    gamma_for_obs_true = gamma_c_true[country_id]                              # (N, K)
-    coefTrue['gamma_global'] = np.array(gamma_global_true)
-    coefTrue['sigma_gamma_c'] = float(sigma_gamma_c_true)
-
-    # omega varies by project (scalar per project)
     omega_global_true = 1.0
-    sigma_omega_p_true = 0.20
-    omega_off_true = dist.Normal(0., 1.).sample(kow, (P,))
-    omega_p_true = omega_global_true + sigma_omega_p_true * omega_off_true     # (P,)
-    omega_for_obs_true = omega_p_true[project_id]                              # (N,)
-    coefTrue['omega_global'] = float(omega_global_true)
-    coefTrue['sigma_omega_p'] = float(sigma_omega_p_true)
-
-    # eta varies by project only (positive; work on log scale)
     mu_log_eta_true = 1.0  # log(2.718) ~ 1.0, so eta_base ~ 2.7
-    sigma_log_eta_p_true = 0.25
-    eta_off_true = dist.Normal(0., 1.).sample(kep, (P,))
-    log_eta_p_true = mu_log_eta_true + sigma_log_eta_p_true * eta_off_true     # (P,)
-    eta_for_obs_true = jnp.exp(log_eta_p_true[project_id])                     # (N,)
+
+    coefTrue['gamma_global'] = np.array(gamma_global_true)
+    coefTrue['omega_global'] = float(omega_global_true)
     coefTrue['mu_log_eta'] = float(mu_log_eta_true)
-    coefTrue['sigma_log_eta_p'] = float(sigma_log_eta_p_true)
-    coefTrue['log_eta_p_true'] = np.array(log_eta_p_true)
+
+    gamma_for_obs_true = jnp.tile(gamma_global_true, (N, 1))  # (N, K)
+    omega_for_obs_true = jnp.repeat(omega_global_true, N)     # (N,)
+    eta_for_obs_true = jnp.exp(mu_log_eta_true) * jnp.ones(N) # (N,)
 
     # --- true NB mean
     logits_true = jnp.sum(Z * gamma_for_obs_true, axis=1) + omega_for_obs_true * D  # (N,)
@@ -480,9 +464,6 @@ for funcForm in func_forms:
     plt.ylabel("tau (Y-scale)")
     plt.legend()
     plt.show()
-
-
-
 
 
 
