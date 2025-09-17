@@ -13,18 +13,27 @@ load("./data/rdat/vil_pd.RData")
 source("./src/redd_int_funs.R")
 
 # prepare list with function arguments
-datasets <- list("Global" = vil_pd,
-                 "Brazil" = vil_pd %>% filter(grepl("Brazil", project)))
+datasets <- list(#"Global" = vil_pd,
+                 "Brazil" = vil_pd %>% 
+                   filter(grepl("Brazil", project),
+                          !grepl("Brazil_SFX", project)))
 
-treatments <- c("", "ALL") # REDD no suffix
+treatments <- c(""#,"ALL"
+                ) # REDD no suffix
 
 outcomes <- c("jrc_perc_UndisturbedForest", 
-              "jrc_perc_ForestDegradation",
-              "jrc_perc_DirectDeforestation")
+              # "jrc_perc_ForestDegradation",
+              # "jrc_perc_DirectDeforestation", 
+              # "jrc_perc_DeforAfterDegrad"
+              )
 
-exposure_levels <- c("avail", "invol", "chnge")
+#outcomes <- c("gfc_cumdef_ha")
 
-n_specs <- length(treatments) * length(outcomes) * length(exposure_levels) * 3
+exposure_levels <- c("avail", 
+                     "invol" #,"chnge"
+                     )
+
+n_specs <- length(treatments) * length(outcomes) * length(exposure_levels) * 4
 
 arg_list <- list()
 
@@ -39,18 +48,23 @@ for (dataset in 1:length(datasets)) {
           list(df = datasets[[dataset]],
             treatment = paste0("int_cat_pos_", exposure_levels[exposure], treatments[treatment]),
             outcome = outcomes[outcome],
-            control = c("int_cat_ena_availALL", "int_cat_neg_availALL", 
-                        "tot_mean_prec", "tot_mean_tmmx")), 
+            control = c("int_cat_ena_availALL", "int_cat_neg_availALL", "int_nonREDD_ongoing_sum",
+                        "tot_mean_prec", "tot_mean_tmmx", "t1_jrc_fc_b_0_500", "pop")), 
           list(df = datasets[[dataset]],
             treatment = paste0("int_cat_ena_", exposure_levels[exposure], treatments[treatment]),
             outcome = outcomes[outcome],
-            control = c("int_cat_pos_availALL", "int_cat_neg_availALL", 
-                        "tot_mean_prec", "tot_mean_tmmx")),
+            control = c("int_cat_pos_availALL", "int_cat_neg_availALL", "int_nonREDD_ongoing_sum",
+                        "tot_mean_prec", "tot_mean_tmmx", "t1_jrc_fc_b_0_500", "pop")),
           list(df = datasets[[dataset]],
             treatment = paste0("int_cat_neg_", exposure_levels[exposure], treatments[treatment]),
             outcome = outcomes[outcome],
-            control = c("int_cat_ena_availALL", "int_cat_pos_availALL", 
-                        "tot_mean_prec", "tot_mean_tmmx")))
+            control = c("int_cat_ena_availALL", "int_cat_pos_availALL", "int_nonREDD_ongoing_sum",
+                        "tot_mean_prec", "tot_mean_tmmx", "t1_jrc_fc_b_0_500", "pop")),
+          list(df = datasets[[dataset]],
+               treatment = paste0("int_cat_tot_", exposure_levels[exposure], treatments[treatment]),
+               outcome = outcomes[outcome],
+               control = c("int_nonREDD_ongoing_sum",
+                           "tot_mean_prec", "tot_mean_tmmx", "t1_jrc_fc_b_0_500", "pop")))
 
         arg_list <- c(arg_list, arg_list_tmp)
       }
@@ -63,7 +77,8 @@ arg_df <- lapply(arg_list, function(arg){
   arg[2:3] %>% as.data.frame()
 }) %>% bind_rows() %>% 
   mutate(id = 1:nrow(.),
-         dataset = rep(c("Global", "Brazil"), each = n_specs),
+         dataset = rep(c(#"Global", 
+                         "Brazil"), each = n_specs),
          interventions = ifelse(grepl("ALL", treatment), "ALL", "REDD"),
          exposure = case_when(
            grepl("avail", treatment) ~ "avail",
@@ -72,14 +87,20 @@ arg_df <- lapply(arg_list, function(arg){
          category = case_when(
            grepl("pos", treatment) ~ "Positive",
            grepl("ena", treatment) ~ "Enabling",
-           grepl("neg", treatment) ~ "Negative"))
+           grepl("neg", treatment) ~ "Negative",
+           grepl("tot", treatment) ~ "Total"))
 
 arg_df
 
-
+# run all models
 sdid_res <- lapply(arg_list, function(arg){
   
-  print(arg[2:3])
+  # previous specification:
+  # trends_lin = TRUE,
+  # normalized = TRUE,
+  # only_never_switchers = TRUE,
+  
+  cat(paste0(arg[3], ": ", arg[2]), "\n") # monitor progress
   
   # try function, if error return NULL
   tryCatch({
@@ -89,7 +110,11 @@ sdid_res <- lapply(arg_list, function(arg){
                        control = arg[["control"]],
                        group = "Village",
                        time = "year", 
-                       cluster = "project",
+                       #cluster = "project",
+                       #trends_lin = TRUE,
+                       trends_nonparam = "project",
+                       #normalized = TRUE,
+                       weight = "area_log",
                        only_never_switchers = F,
                        placebo = 6, effects = 8, 
                        graph_off = T)
@@ -120,7 +145,12 @@ res_df <- bind_cols(arg_df, res_df_tmp)
 # check if confidence bound columns have same sign
 res_df$ci_includes_zero <- ifelse(res_df$`LB CI` * res_df$`UB CI` > 0, T, F)
 
+# indicator for insignificant placebo
+res_df$placebo_good <- ifelse(res_df$p_jointplacebo > 0.1, T, F)
+res_df$main_good <- ifelse(res_df$p_jointeffects < 0.1, T, F)
 
+res_df$all_good <- ifelse(res_df$placebo_good & res_df$main_good, T, F)
+View(res_df)
 
 # function to make and combine plots
 plot_combiner = function(dict = arg_df, d, o, i, c, y_range = c(-0.2, 0.2)){
@@ -198,8 +228,9 @@ ggsave("./out/fig/sdid_global_deg.png", p.glob.deg, width = 8, height = 8, bg = 
 # Brazil
 p.bra.fc <- plot_combiner(d = c("Brazil"), 
               o = c("jrc_perc_UndisturbedForest"),
-              i = c("ALL", "REDD"), 
-              c = c("Positive", "Enabling"), 
+              i = c("ALL", 
+                    "REDD"), 
+              c = c("Positive", "Enabling", "Total"), 
               y_range = c(-0.2, 0.2))
 
 p.bra.fc <- annotate_figure(p.bra.fc, top = text_grob("Brazil, Forest cover",
@@ -207,7 +238,8 @@ p.bra.fc <- annotate_figure(p.bra.fc, top = text_grob("Brazil, Forest cover",
 
 p.bra.def <- plot_combiner(d = c("Brazil"),
               o = c("jrc_perc_DirectDeforestation"),
-              i = c("ALL", "REDD"), 
+              i = c(#"ALL", 
+                    "REDD"), 
               c = c("Positive", "Enabling"), 
               y_range = c(-0.05, 0.05))
 

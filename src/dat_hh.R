@@ -20,12 +20,32 @@ p3 <- read_xlsx(paste0(datapath, "/7. Phase 3 Final/M2_GCS_PHASE3_HOUSEHOLD_2021
 
 
 # fit some column types
-p1$Year_formed <- as.numeric(p1$Year_formed)
-p1$Hh_lived <- as.numeric(p1$Hh_lived)
-p1$Forest_cash <- as.numeric(p1$Forest_cash)
-p1$Hh_clear_total1 <- as.numeric(p1$Hh_clear_total1)
-p1$Hh_clear_total2 <- as.numeric(p1$Hh_clear_total2)
-p1$Hh_clear_total3 <- as.numeric(p1$Hh_clear_total3)
+p1 <- p1 |>
+  mutate(Year_formed = as.numeric(Year_formed),
+         Hh_lived = as.numeric(Hh_lived),
+         Forest_cash = as.numeric(Forest_cash),
+         Hh_clear_total1 = as.numeric(Hh_clear_total1),
+         Hh_clear_total2 = as.numeric(Hh_clear_total2),
+         Hh_clear_total3 = as.numeric(Hh_clear_total3),
+         perwell_comp = case_when(perwell_compare == 1 ~ 1,
+                                  perwell_compare == 2 ~ 0,
+                                  perwell_compare == 3 ~ -1,
+                                  TRUE ~ NA),
+         income_suff = case_when(perwell_over == 1 ~ 1,
+                                 perwell_over == 2 ~ 0,
+                                 perwell_over == 3 ~ -1,
+                                  TRUE ~ NA))
+
+p2 <- p2 |>
+  mutate(perwell_comp = case_when(Perwell_compare == 1 ~ 1,
+                                   Perwell_compare == 2 ~ 0,
+                                   Perwell_compare == 3 ~ -1,
+                                   TRUE ~ NA),
+         income_suff = case_when(Perwell_over == 1 ~ 1,
+                                 Perwell_over == 2 ~ 0,
+                                 Perwell_over == 3 ~ -1,
+                                  TRUE ~ NA))
+
 
 
 # rename variables to match
@@ -78,16 +98,28 @@ p3 <- p3 %>%
          Hh_clear_total1 = as.numeric(Hh_clear_total1), 
          Hh_clear_total2 = as.numeric(Hh_clear_total2),
          Hh_clear_total3 = as.numeric(Hh_clear_total3),
-         Forest_cash = as.numeric(Forest_cash))
+         Forest_cash = as.numeric(Forest_cash),
+         perwell_comp = case_when(P3H_4q2_overall_wellb == 1 ~ 1,
+                                  P3H_4q2_overall_wellb == 2 ~ 0,
+                                  P3H_4q2_overall_wellb == 3 ~ -1,
+                                  TRUE ~ NA), 
+         income_suff = case_when(P3H_4q1_sufficient_inc == 1 ~ 1,
+                                 P3H_4q1_sufficient_inc == 2 ~ 0,
+                                 P3H_4q1_sufficient_inc == 3 ~ -1,
+                                  TRUE ~ NA))
 
 
-voip3 <- voi[!voi %in% c("Distance_min","Distance_km")]
+voip3 <- voi[!voi %in% c("Distance_min","Distance_km", "Country_code_desc", "Project_code_desc")]
 
 pd <- p1  %>% 
   dplyr::select(all_of(voi))%>% 
   bind_rows(., p2 %>% dplyr::select(all_of(voi))) %>%
   bind_rows(., p3 %>% dplyr::select(all_of(voip3))) #%>% filter(Country_code %in% c(101, 102, 300))
 
+pd <- pd %>%
+  group_by(Code_form) %>%
+  mutate(Country_code_desc == ifelse(is.na(Country_code_desc), unique(Country_code_desc), Country_code_desc),
+         Project_code_desc == ifelse(is.na(Project_code_desc), unique(Project_code_desc), Project_code_desc))
 
 # transform numerical variables
 charvars <- c("Period","Year_formed","Hh_born","Hh_lived",
@@ -112,8 +144,11 @@ p1.member.wide <- p1.member %>%
   group_by(Code_form) %>%
   summarise(hh_head_female = Gender[Relation_hh == 1],
             hh_head_age = Age[Relation_hh == 1],
+            hh_head_educ = Year_education[Relation_hh == 1],
+            hh_head_days_ill = Day_illness[Relation_hh == 1],
             hh_member = n(),
             hh_children = length(Name_hh[Age<16]),
+            hh_adult = length(Name_hh[Age>=16]),
             hh_elderly  = length(Name_hh[Age>65]), 
             hh_dependency_ratio = (hh_children+hh_elderly)/hh_member,
             hh_head_occup_agric = grepl("Own production|timber|Forestry|Agricult*", 
@@ -168,7 +203,7 @@ p1.hh.assets.wide <- p1.hh.assets %>%
   summarise(owns_tv = ifelse("Television" %in% Type_asset_desc, 1, 0),
             owns_motorcycle = ifelse("Motorcycle" %in% Type_asset_desc, 1, 0),
             owns_cellphone = ifelse("Cell phone" %in% Type_asset_desc, 1, 0),
-            total_asset_value = sum(Tot_value)) %>%
+            total_asset_value = sum(Tot_value, na.rm = T)) %>%
   ungroup()
 
 
@@ -177,9 +212,7 @@ p1.hh.env.income <- read_xls(paste0(datapath, "/1. Phase 1 Final/M2_GCS_REDD_PHA
 
 p1.hh.env.income.wide <- p1.hh.env.income %>%
   group_by(Code_form) %>%
-  summarise(income_forest = sum(Income),
-            # Sheets contains no differentiation forest/Agric., therefore, total
-            income_nonforest = NA) %>%
+  summarise(income_forest = sum(Income, na.rm = T)) %>%
   ungroup()
 
 
@@ -189,7 +222,7 @@ p1.hh.business <- read_xls(paste0(datapath, "/1. Phase 1 Final/M2_GCS_REDD_PHASE
 p1.hh.business.wide <- p1.hh.business %>%
   group_by(Code_form) %>%
   # only considering first listed business here!
-  summarise(business_net_income = sum(Net_income1)) %>%
+  summarise(business_net_income = sum(Net_income1, na.rm = T)) %>%
   ungroup()
 
 
@@ -198,9 +231,9 @@ p1.hh.salary <- read_xls(paste0(datapath, "/1. Phase 1 Final/M2_GCS_REDD_PHASE1_
 
 p1.hh.salary.wide <- p1.hh.salary %>%
   group_by(Code_form) %>%
-  summarise(total_salary = sum(Tot_income),
+  summarise(total_salary = sum(Tot_income, na.rm = T),
             agric_salary = sum(Tot_income[grepl("own production|timber|forestry|agricult*", 
-                                                tolower(Type_work_desc))])) %>%
+                                                tolower(Type_work_desc))], na.rm = T)) %>%
   ungroup()
 
 
@@ -209,9 +242,9 @@ p1.hh.inc.other <- read_xls(paste0(datapath, "/1. Phase 1 Final/M2_GCS_REDD_PHAS
 
 p1.hh.inc.other.wide <- p1.hh.inc.other %>%
   group_by(Code_form) %>%
-  summarise(income_other_tot   = sum(Avg_amount),
-            income_gov_trans   = sum(Avg_amount[grepl("government", Type_income_desc)]),
-            income_remittances = sum(Avg_amount[grepl("Remittances", Type_income_desc)]),
+  summarise(income_other_tot   = sum(Avg_amount, na.rm = T),
+            income_gov_trans   = sum(Avg_amount[grepl("government", Type_income_desc)], na.rm = T),
+            income_remittances = sum(Avg_amount[grepl("Remittances", Type_income_desc)], na.rm = T),
   ) %>%
   ungroup()
 
@@ -238,8 +271,11 @@ p2.member.wide <- p2.member %>%
   group_by(Code_form) %>%
   summarise(hh_head_female = Gender[Relation_hh == 1],
             hh_head_age = Age[Relation_hh == 1],
+            hh_head_educ = Year_education[Relation_hh == 1],
+            hh_head_days_ill = Day_illness[Relation_hh == 1],
             hh_member = n(),
             hh_children = length(Name_hh[Age<16]),
+            hh_adult = length(Name_hh[Age>=16]),
             hh_elderly  = length(Name_hh[Age>65]), 
             hh_dependency_ratio = (hh_children+hh_elderly)/hh_member,
             hh_head_occup_agric = grepl("Own production|timber|Forestry|Agricult*", 
@@ -250,7 +286,7 @@ p2.hh.land <- read_xls(paste0(datapath, "/2. Phase 2 Final/M2_GCS_PHASE2_HOUSEHO
                           sheet = "Tbl_Household_Asset_2A", na = c("", "-9"))
 
 p2.hh.land.wide <- p2.hh.land %>%
-  filter(Area_land_use >= 0) %>%
+  #filter(Area_land_use >= 0) %>%
   group_by(Code_form) %>%
   summarise(land_tot_used  = sum(Area_land_use, na.rm = TRUE),
             land_tot_rent = sum(Area_land_rent, na.rm = TRUE),
@@ -291,7 +327,7 @@ p2.hh.assets.wide <- p2.hh.assets %>%
   summarise(owns_tv = ifelse("Television" %in% Type_asset_desc, 1, 0),
             owns_motorcycle = ifelse("Motorcycle" %in% Type_asset_desc, 1, 0),
             owns_cellphone = ifelse("Cell phone" %in% Type_asset_desc, 1, 0),
-            total_asset_value = sum(Tot_value)) %>%
+            total_asset_value = sum(Tot_value, na.rm = T)) %>%
   ungroup()
 
 
@@ -300,8 +336,8 @@ p2.hh.env.income <- read_xls(paste0(datapath, "/2. Phase 2 Final/M2_GCS_PHASE2_H
 
 p2.hh.env.income.wide <- p2.hh.env.income %>%
   group_by(Code_form) %>%
-  summarise(income_forest = sum(Income[Where_collect_desc=="Forest"]),
-            income_nonforest = sum(Income[Where_collect_desc=="Non-forest"])) %>%
+  summarise(income_forest = sum(Income[Where_collect_desc=="Forest"], na.rm = T),
+            income_nonforest = sum(Income[Where_collect_desc=="Non-forest"], na.rm = T)) %>%
   ungroup()
 
 
@@ -310,7 +346,7 @@ p2.hh.business <- read_xls(paste0(datapath, "/2. Phase 2 Final/M2_GCS_PHASE2_HOU
 
 p2.hh.business.wide <- p2.hh.business %>%
   group_by(Code_form) %>%
-  summarise(business_net_income = sum(Net_income)) %>%
+  summarise(business_net_income = sum(Net_income, na.rm = T)) %>%
   ungroup()
 
 
@@ -319,9 +355,9 @@ p2.hh.salary <- read_xls(paste0(datapath, "/2. Phase 2 Final/M2_GCS_PHASE2_HOUSE
 
 p2.hh.salary.wide <- p2.hh.salary %>%
   group_by(Code_form) %>%
-  summarise(total_salary = sum(Tot_income),
+  summarise(total_salary = sum(Tot_income, na.rm = T),
             agric_salary = sum(Tot_income[grepl("own production|timber|forestry|agricult*", 
-                                                tolower(Type_work_desc))])) %>%
+                                                tolower(Type_work_desc))], na.rm = T)) %>%
   ungroup()
 
 
@@ -330,9 +366,9 @@ p2.hh.inc.other <- read_xls(paste0(datapath, "/2. Phase 2 Final/M2_GCS_PHASE2_HO
 
 p2.hh.inc.other.wide <- p2.hh.inc.other %>%
   group_by(Code_form) %>%
-  summarise(income_other_tot   = sum(Avg_amount),
-            income_gov_trans   = sum(Avg_amount[grepl("government", Type_income_desc)]),
-            income_remittances = sum(Avg_amount[grepl("Remittances", Type_income_desc)]),
+  summarise(income_other_tot   = sum(Avg_amount, na.rm = T),
+            income_gov_trans   = sum(Avg_amount[grepl("government", Type_income_desc)], na.rm = T),
+            income_remittances = sum(Avg_amount[grepl("Remittances", Type_income_desc)], na.rm = T),
   ) %>%
   ungroup()
 
@@ -363,19 +399,24 @@ p3.member.wide <- p3.member %>%
   group_by(P3H_code_form) %>%
   summarise(hh_head_female = max(P3H_1aq3_gender[P3H_1aq2_relation == 1]),
             hh_head_age = max(P3H_1aq4_age[P3H_1aq2_relation == 1]),
+            hh_head_educ = max(P3H_1aq5_education[P3H_1aq2_relation == 1]),
+            hh_head_days_ill = max(P3H_1aq8_illness_day[P3H_1aq2_relation == 1]),
             hh_member = n(),
             hh_children = length(P3H_1aq1_name[P3H_1aq4_age<16]),
+            hh_adult = length(P3H_1aq1_name[P3H_1aq4_age>=16]),
             hh_elderly  = length(P3H_1aq1_name[P3H_1aq4_age>65]), 
             hh_dependency_ratio = (hh_children+hh_elderly)/hh_member,
             hh_head_occup_agric = any(grepl("Own production|timber|Forestry|Agricult*", 
                                         P3H_1aq6_mainliv_text_English[P3H_1aq2_relation == 1]))*1) %>%
   ungroup()
 
+p3.member.wide$hh_head_days_ill <- as.numeric(p3.member.wide$hh_head_days_ill)
+
 p3.hh.land <- read_xlsx(paste0(datapath, "/7. Phase 3 Final/M2_GCS_PHASE3_HOUSEHOLD_20211208_20220419_20221125.xlsx"),
                         sheet = "q2a_household_landasset", na = c("", "-9", "-8"))
 
 p3.hh.land.wide <- p3.hh.land %>%
-  filter(!is.na(P3H_2aq1_used_area)) %>%
+  #filter(!is.na(P3H_2aq1_used_area)) %>%
   group_by(P3H_code_form) %>%
   summarise(land_tot_used  = sum(P3H_2aq1_used_area, na.rm = TRUE),
             land_tot_rent = sum(P3H_2aq2_rent_area, na.rm = TRUE),
@@ -421,7 +462,7 @@ p3.hh.assets.wide <- p3.hh.assets %>%
   summarise(owns_tv = ifelse("14" %in% P3H_2eq1_assettype, 1, 0),
             owns_motorcycle = ifelse("3" %in% P3H_2eq1_assettype, 1, 0),
             owns_cellphone = ifelse("12" %in% P3H_2eq1_assettype, 1, 0),
-            total_asset_value = sum(P3H_2eq4_totvalue)) %>%
+            total_asset_value = sum(P3H_2eq4_totvalue, na.rm = T)) %>%
   ungroup()
 
 
@@ -434,8 +475,8 @@ p3.hh.env.income <- read_xlsx(paste0(datapath, "/7. Phase 3 Final/M2_GCS_PHASE3_
 
 p3.hh.env.income.wide <- p3.hh.env.income %>%
   group_by(P3H_code_form) %>%
-  summarise(income_forest = sum(P3H_3hiq10_net_income[P3H_3hiq1c_collectfrom==1]),
-            income_nonforest = sum(P3H_3hiq10_net_income[P3H_3hiq1c_collectfrom==2])) %>%
+  summarise(income_forest = sum(P3H_3hiq10_net_income[P3H_3hiq1c_collectfrom==1], na.rm = T),
+            income_nonforest = sum(P3H_3hiq10_net_income[P3H_3hiq1c_collectfrom==2], na.rm = T)) %>%
   ungroup()
 
 
@@ -444,7 +485,7 @@ p3.hh.business <- read_xlsx(paste0(datapath, "/7. Phase 3 Final/M2_GCS_PHASE3_HO
 
 p3.hh.business.wide <- p3.hh.business %>%
   group_by(P3H_code_form) %>%
-  summarise(business_net_income = sum(P3H_3kq5_net_income1)) %>%
+  summarise(business_net_income = sum(P3H_3kq5_net_income1, na.rm = T)) %>%
   ungroup()
 
 
@@ -454,7 +495,7 @@ p3.hh.salary <- read_xlsx(paste0(datapath, "/7. Phase 3 Final/M2_GCS_PHASE3_HOUS
 
 p3.hh.salary.wide <- p3.hh.salary %>%
   group_by(P3H_code_form) %>%
-  summarise(total_salary = sum(P3H_3lq6_tot_income)) %>%
+  summarise(total_salary = sum(P3H_3lq6_tot_income, na.rm = T)) %>%
   ungroup()
 
 
@@ -463,7 +504,7 @@ p3.hh.inc.other <- read_xlsx(paste0(datapath, "/7. Phase 3 Final/M2_GCS_PHASE3_H
 
 p3.hh.inc.other.wide <- p3.hh.inc.other %>%
   group_by(P3H_code_form) %>%
-  summarise(income_other_tot   = sum(P3H_3mq3_tot_amount)) %>%
+  summarise(income_other_tot   = sum(P3H_3mq3_tot_amount, na.rm = T)) %>%
   ungroup()
 
 p3.hh.wide <-  p3.member.wide %>%
@@ -517,9 +558,9 @@ load(file = "./data/rdat/hh_pd_full.RData")
 ctrl_vars <- c(
   # Personal 
   "Marital_status", "Year_formed", "Hh_born", "Hh_lived",
-  "Hh_ethnic", "Hh_spouse", "Hh_spouse_ethnic", 
-  "hh_head_female",  "hh_head_age", 
-  "hh_member", "hh_children", "hh_elderly", "hh_dependency_ratio", 
+  "Hh_ethnic", "Hh_spouse", "Hh_spouse_ethnic", "hh_head_days_ill",
+  "hh_head_female",  "hh_head_age", "hh_head_educ", 
+  "hh_member","hh_adult", "hh_children", "hh_elderly", "hh_dependency_ratio", 
   "hh_head_occup_agric",
   # House assets
   "Hh_cooking_tech",  "Hh_floor2", "Hh_walls2",  "Hh_roof2",
@@ -560,21 +601,22 @@ hh_pd_full %>%
 
 # -> restrict analysis to 8 projects from three countries
 hh_pd_filt <- hh_pd_full %>%
-  mutate(country_project = paste(Country_code, Project_code, sep = "_")) %>%
-  filter(country_project %in% c("101_01","101_02","101_03","101_04",
-                                "102_01", "102_03", 
-                                "300_05", "300_06"))
+  mutate(country_project = paste(Country_code, Project_code, sep = "_")) #%>%
+  #filter(country_project %in% c("101_01","101_02","101_03","101_04",
+  #                              "102_01", "102_03", 
+  #                              "300_05", "300_06"))
 
 hh_pd_filt %>% 
   group_by(Village_Type) %>% 
-  summarise(n_vil = length(unique(Village)))
+  summarise(n_vil = length(unique(Village))) %>%
+  ungroup()
 
 # Now, 6060 observations, 65 villages.  
 
 #### Remove outliers in some control variables ####
 
 # remove outliers (> 20 IQR in some control variable)
-skewed_vars <- c("land_tot","total_asset_value")
+skewed_vars <- c("land_tot","total_asset_value", "income_nonforest", "income_forest")
 
 # remove outliers in skewed covariates
 # defined as larger than 20 times the interquartile range within country and period
@@ -590,6 +632,87 @@ hh_pd_filt <- hh_pd_filt %>%
          !is.na(forest_share))
 
 # Now, 6009 observations, removed 51 very large land observations or missing outcomes.
+
+zero_vars <- c("owns_cellphone", "owns_motorcycle", "owns_tv")
+
+# replace missing values of some variables with zero
+hh_pd_filt <- hh_pd_filt %>%
+  mutate(across(all_of(zero_vars), ~replace_na(., 0)))
+
+# Following Solis et al. 2021:
+# age, years of education, years in village, and birthplace of the household head, 
+# number of household members, number of adult equivalents, years since the 
+# household formed, house condition index,utility index, asset value, total land, 
+# total annual revenue, annual farming revenue, annual forest revenue, annual timber revenue.
+
+# Solis also added artificial11 variables: years of education power to two, 
+# years of education power to three, and interaction between birthplace and years of education
+
+# in addition used by Baez 2022 (MSc Thesis):
+# - dependency ratio is the number of household members under 15 years + household 
+#   members over 65 years divided by the number of members between 15  and 65 years of age.
+# - Distance to the village center 
+# - Houses owned in and outside the village
+# - Gender of the head of HH
+
+# Required computations:
+# - adult equivalents: OECD adult equivalent formula of 
+#   AE = 1 + 0.7(Number of adults – 1) + 0.5∗Number of Children. 
+#   It has the following equivalence: first adult = 1, further adults = 0.7, 
+#   all members <16 years = 0.5.
+# - house condition index includes type of roof, walls and floors. Each type is 
+#   valued from 1 (poor), 2 (medium), and 3 (high), this gives an index with 
+#   minimum value of 3 (low) and maximum value 9 (high).
+# - Utility index represents household access to utilities (water, toilet, and 
+#   electricity), including variables with the following levels: water (stream, 
+#   river, pond, common faucet or well = low, own well or reservoir = medium 
+#   and piped water = high); toilet (no latrine or shared latrine = low, own 
+#   latrine = medium, own flush toilet with piped water = high); electricity 
+#   (no electricity = low, through unpaid connection to grid or village 
+#   system = medium, and through paid connection to grid or own generator = high). 
+#   The relative value are 1 = low, 2 = medium, and 3 = high. This gives an 
+#   index with minimum value 3 (low) and maximum value 9 (high).
+
+
+# 1) calculate indices and derived variables.
+# 2) impute missing values as village means.
+# 3) LASSO selection on baseline forest cover outcome (P=1)
+#    -> this should include ended and ongoing pre-REDD interventions
+# 4) LASSO selection on treatment (number REDD interventions)
+# 5) Define X and Z for later use. prepare data for wide format (crosssection)
+# 5) Three datasets: Short (all), Short (BRA, PER, IND), Medium (BRA, PER, IND)
+
+
+#### 1) Add new variables ####
+
+# Calculate adult equivalents
+hh_pd_filt <- hh_pd_filt %>%
+  mutate(
+    # AE = 1 + 0.7(Number of adults – 1) + 0.5∗Number of Children.
+    HH_adults = hh_member - hh_children,
+    HH_adult_equivalents = 1 + 0.7 * (HH_adults - 1) + 0.5 * hh_children,
+    # house condition index
+    HH_house_condition_index = Hh_roof2 + Hh_walls2 + Hh_floor2,
+    # Utility index (water, toilet, electricity)
+    Hh_toilet = pmin(Hh_toilet, 3),
+    Hh_water = pmin(Hh_water, 3),
+    Hh_electric = pmin(Hh_electric, 3)
+  ) %>%
+  # Step 2: Calculate the index using the now-capped columns
+  mutate(hh_utility_index = rowSums(select(., Hh_toilet, Hh_water, Hh_electric), na.rm = TRUE))
+
+
+
+
+# impute missing values as village level means
+hh_pd_imp <- hh_pd_filt %>%
+  group_by(Village, Period) %>%
+  mutate(across(all_of(ctrl_vars), ~ ifelse(is.na(.), mean(., na.rm = TRUE), .))) %>%
+  ungroup()
+
+# save
+save(hh_pd_imp, file = "./data/rdat/hh_pd_imp.RData")
+
 
 
 # show attrition rates and make balanced panel
@@ -632,22 +755,9 @@ length(unique(hh_pd_bal$Village))
 
 # Now, 1338 observations, 65 villages.
 
-zero_vars <- c("owns_cellphone", "owns_motorcycle", "owns_tv")
-
-# replace missing values of some variables with zero
-hh_pd_bal <- hh_pd_bal %>%
-  mutate(across(all_of(zero_vars), ~replace_na(., 0)))
 
 # save
 save(hh_pd_bal, file = "./data/rdat/hh_pd_bal.RData")
 
 
-# impute missing values as village level means
-hh_pd_bal_imp <- hh_pd_bal %>%
-  group_by(Village, Period) %>%
-  mutate(across(all_of(ctrl_vars), ~ ifelse(is.na(.), mean(., na.rm = TRUE), .))) %>%
-  ungroup()
-
-# save
-save(hh_pd_bal_imp, file = "./data/rdat/hh_pd_bal_imp.RData")
 

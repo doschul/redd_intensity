@@ -96,6 +96,82 @@ cifor_vil_poly <- shp_files[,"vil_clean"]
 
 #sf::st_write(cifor_vil_poly, "cifor_vil_poly.shp")
 
+# outer buffer function
+make_buffer <- function(df, dist=100, gap = 0) {
+  original_crs <- st_crs(df)
+  
+  df <- df %>%
+    st_transform(32722)
+  
+  origin_union <- st_union(df) %>%
+    st_make_valid()
+  
+  
+  if (gap == 0) {
+    # make buffer and remove original inner shapes (one by one)
+    buff <- lapply(1:nrow(df), function(x){
+      st_difference(st_buffer(df[x,], 
+                              dist=dist),
+                    df[x,]) %>%
+        # also remove entirety of original shapes
+        st_difference(., origin_union)
+    }) %>% do.call(rbind.data.frame,.)
+  }
+  
+  # if gap is specified, first buffer the original shapes 
+  # and then remove the inner shapes and the gap
+  if (gap > 0) {
+    gaps <- st_buffer(df, dist=gap)
+    
+    gap_union <- st_union(gaps) %>%
+      st_make_valid()
+    
+    buff <- lapply(1:nrow(gaps), function(x){
+      st_difference(st_buffer(gaps[x,], 
+                              dist=dist),
+                    gaps[x,]) %>%
+        st_difference(., gap_union)
+    }) %>% do.call(rbind.data.frame,.)
+  }
+  
+  # assign original crs
+  buff <- buff %>%
+    st_transform(original_crs)
+  
+  return(buff[,1])
+}
+
+# make buffer polygons
+b_0_100 <- make_buffer(cifor_vil_poly, dist = 100, gap = 0)
+b_0_500 <- make_buffer(cifor_vil_poly, dist = 500, gap = 0)
+b_0_1000 <- make_buffer(cifor_vil_poly, dist = 1000, gap = 0)
+b_0_5000 <- make_buffer(cifor_vil_poly, dist = 5000, gap = 0)
+
+b_100_500 <- make_buffer(cifor_vil_poly, dist = 500, gap = 100)
+b_500_1000 <- make_buffer(cifor_vil_poly, dist = 1000, gap = 500)
+b_1000_5000 <- make_buffer(cifor_vil_poly, dist = 5000, gap = 1000)
+
+
+# save buffer polygons
+sf::st_write(b_0_100, "./data/raw/vil_shp/village_buffer/b_0_100.shp", append = F)
+sf::st_write(b_0_500, "./data/raw/vil_shp/village_buffer/b_0_500.shp", append = F)
+sf::st_write(b_0_1000, "./data/raw/vil_shp/village_buffer/b_0_1000.shp", append = F)
+sf::st_write(b_0_5000, "./data/raw/vil_shp/village_buffer/b_0_5000.shp", append = F)
+sf::st_write(b_100_500, "./data/raw/vil_shp/village_buffer/b_100_500.shp", append = F)
+sf::st_write(b_500_1000, "./data/raw/vil_shp/village_buffer/b_500_1000.shp", append = F)
+sf::st_write(b_1000_5000, "./data/raw/vil_shp/village_buffer/b_1000_5000.shp", append = F)
+
+# combine buffers into one shapefile
+buffers <- rbind(b_0_100, b_0_500, b_0_1000, b_0_5000, b_100_500, b_500_1000, b_1000_5000)
+
+# add buffer type
+buffers$buffer <- rep(c("b_0_100", "b_0_500","b_0_1000","b_0_5000",
+                        "b_100_500","b_500_1000","b_1000_5000"), 
+                      each = nrow(cifor_vil_poly))
+
+sf::st_write(buffers, "./data/raw/vil_shp/village_buffer/all_buffers.shp", append = F)
+
+
 # count observations per shapefile
 n_obs <- list.files(shape_path, pattern = "pol_tot.shp$", 
                     full.names = T) %>%
@@ -121,6 +197,8 @@ project_df <- data.frame(Village = shp_files$Village,
                          project = rep(project_names, n_obs),
                          area_km2 = shp_files$area_km2)  
 
+# save project_df
+save(project_df, file = "./data/rdat/project_df.RData")
 
 ##### 2 GEE data #####
 
@@ -350,6 +428,9 @@ folder_id = drive_get(as_id(jp_folder))
 #find files in folder
 files = drive_ls(folder_id)
 
+# consider only buffer files
+files <- files %>% filter(grepl("buffers", name))
+
 #loop dirs and download files inside them
 for (i in seq_along(files$name)) {
   
@@ -375,6 +456,69 @@ jrc_dat$.geo <- NULL
 jrc_dat$name <- NULL
 
 save(jrc_dat, file = "./data/rdat/jrc_dat.RData")
+
+
+# read files
+jrc_buffer_files <- list.files("./data/raw/gee_jrc/", 
+                        pattern = "csv$", 
+                        full.names = T) %>%
+  str_subset("buffers")
+
+jrc_buffer_dat <- do.call(rbind, lapply(jrc_buffer_files, function(x) cbind(read_csv(x), name=tail(strsplit(x, "/")[[1]], 1))))
+
+jrc_buffer_dat$year <- as.integer(substr(jrc_buffer_dat$name, 31, 34))
+jrc_buffer_dat$`system:index` <- NULL
+jrc_buffer_dat$.geo <- NULL
+jrc_buffer_dat$name <- NULL
+
+
+buf_undist_fc_2000 <- jrc_buffer_dat %>%
+  filter(year == 2000) %>%
+  mutate(jrc_fc2000_ha = UndisturbedForest / 10000) %>%
+  select(vil_clean, buffer, jrc_fc2000_ha)
+
+jrc_buffer_wide <-  jrc_buffer_dat %>%
+  left_join(., buf_undist_fc_2000, by = c("vil_clean", "buffer")) %>%
+  # calculate relative loss variables
+  mutate(
+    jrc_fc = (UndisturbedForest / 10000) / jrc_fc2000_ha,
+    jrc_deg = (ForestDegradation / 10000) / jrc_fc2000_ha,
+    jrc_def = (DirectDeforestation / 10000) / jrc_fc2000_ha,
+    jrc_degdef = (DeforAfterDegrad / 10000) / jrc_fc2000_ha,
+    jrc_deftot = (DirectDeforestation + DeforAfterDegrad) / 10000 / jrc_fc2000_ha
+  )  %>%
+  # remove original columns
+  select(-jrc_fc2000_ha, -UndisturbedForest, -ForestDegradation, 
+         -DirectDeforestation, -DeforAfterDegrad, -Regrowth) %>% 
+  # transform to wide
+  pivot_wider(names_from = "buffer",
+              values_from = c("jrc_fc", 
+                              "jrc_deg", 
+                              "jrc_def", 
+                              "jrc_degdef", 
+                              "jrc_deftot"))
+
+library(data.table)
+
+# turn into data.table
+jrc_buffer_wide <- as.data.table(jrc_buffer_wide)
+
+# sort by village and year
+jrc_buffer_wide <- jrc_buffer_wide[order(vil_clean, year)]
+
+nm1 <- grep("jrc", colnames(jrc_buffer_wide), value=TRUE)
+nm2 <- paste("t1", nm1, sep="_")
+
+jrc_buffer_wide_lag <- jrc_buffer_wide[, (nm2) :=  shift(.SD), by=vil_clean, .SDcols=nm1]
+
+# replace missing fc-column values with 1, all others with 0
+jrc_buffer_wide_lag <- jrc_buffer_wide_lag %>%
+  mutate_at(vars(starts_with("t1_jrc_f")), ~replace(., is.na(.), 1)) %>%
+  mutate_at(vars(starts_with("t1_jrc_d")), ~replace(., is.na(.), 0))
+
+
+save(jrc_buffer_wide_lag, file = "./data/rdat/jrc_buffer_wide_lag.RData")
+
 
 #### 2c) Village level covariate data ####
 
@@ -445,17 +589,64 @@ terraclimate_wide <- ee_long %>%
 # save
 save(terraclimate_wide, file = "./data/rdat/terraclimate_wide.RData")
 
-  
+#### population data ####
 
+gee_pop <- ee$ImageCollection("CIESIN/GPWv411/GPW_Population_Count") %>%
+  ee$ImageCollection$filterDate("2000-01-01", "2020-12-31") %>%
+  ee$ImageCollection$toBands() # from imagecollection to image
+
+# extract
+ee_pop_dens <- ee_extract(x = gee_pop, y = cifor_vil_poly, fun = ee$Reducer$mean(),
+                     scale = 500,sf = FALSE)
+ee_pop <- ee_extract(x = gee_pop, y = cifor_vil_poly, fun = ee$Reducer$sum(),
+                          scale = 500,sf = FALSE)
+
+# rename columns
+names(ee_pop) <- c("vil_clean", "pop2000", "pop2005", "pop2010", "pop2015", "pop2020")
+# rename columns
+names(ee_pop_dens) <- c("vil_clean", "popdens2000", "popdens2005", "popdens2010", 
+                        "popdens2015", "popdens2020")
+
+# long format and fill missing years
+ee_pop_long <- ee_pop %>%
+  pivot_longer(cols = -"vil_clean",
+               names_to = "year",
+               values_to = "pop") %>%
+  mutate(year = as.integer(gsub("pop", "", year))) %>%
+  complete(vil_clean, year = 2000:2022) %>%
+  fill(pop, .direction = "down") %>%
+  fill(pop, .direction = "up")
+
+# long format and fill missing years
+ee_popdens_long <- ee_pop_dens %>%
+  pivot_longer(cols = -"vil_clean",
+               names_to = "year",
+               values_to = "popdens") %>%
+  mutate(year = as.integer(gsub("popdens", "", year))) %>%
+  complete(vil_clean, year = 2000:2022) %>%
+  fill(popdens, .direction = "down") %>%
+  fill(popdens, .direction = "up")
+
+# merge
+ee_pop_long <- ee_pop_long %>%
+  left_join(., ee_popdens_long, by = c("vil_clean", "year"))
+
+# save
+save(ee_pop_long, file = "./data/rdat/population.RData")
 
 #### 2d) merge data into long format ####
 
+rm(list = ls())
+
 #load("./data/forest_loss.RData")
+load("./data/rdat/project_df.RData")
 load("./data/rdat/gfc_long.RData")
 load("./data/rdat/jrc_dat.RData")
+load("./data/rdat/jrc_buffer_wide_lag.RData")
 load("./data/rdat/hh_pd.RData")
 load("./data/rdat/vil_treat_agg.RData")
 load("./data/rdat/terraclimate_wide.RData")
+load("./data/rdat/population.RData")
 
 
 # aggregate self-reported data to village level
@@ -487,6 +678,8 @@ vil_pd <- project_df %>%
   left_join(., self_reported_vil_hh, by = c("Village", "year")) %>%
   left_join(., vil_treat_agg, by = c("Village", "year")) %>%
   left_join(., terraclimate_wide, by = c("vil_clean", "year")) %>%
+  left_join(., ee_pop_long, by = c("vil_clean", "year")) %>%
+  left_join(., jrc_buffer_wide_lag, by = c("vil_clean", "year")) %>%
   # calculate relative loss variables
   mutate(
     jrc_perc_UndisturbedForest = (UndisturbedForest / 10000) / jrc_fc2000_ha,

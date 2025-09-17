@@ -8,7 +8,7 @@ rm(list=ls())
 library(tidyverse)
 library(readxl)
 
-setwd("C:/Users/DaSchulz/OneDrive - European Forest Institute/Dokumente/research/cifor")
+setwd("C:/Users/DaSchulz/OneDrive - European Forest Institute/Dokumente/research/redd_intensity")
 datapath <- "C:/Users/DaSchulz/OneDrive - European Forest Institute/Dokumente/projects/cifor/1. Research/1. M2 Main Database/1. Global Database"
 
 # settings
@@ -243,7 +243,9 @@ ggplot(int_df_full,
 
 
 ##### Aggregate to village level #####
-load("./data/int_df_full.RData")
+load("./data/rdat/int_df_full.RData")
+load("./data/rdat/hh_pd_full.RData")
+
 
 # identify variables to aggregate
 trt_vars_bin <- names(int_df_full) %>%
@@ -255,9 +257,10 @@ trt_vars_cont <- names(int_df_full) %>%
   subset(grepl("sum|cat", .))
 
 # get villges from p2 data
-code_villages <- p2.treat %>%
+code_villages <- hh_pd_full %>%
   select(Code_form, Village) %>%
-  distinct()
+  distinct() %>%
+  filter(!duplicated(Code_form))
 
 vil_treat_agg <- int_df_full %>%
   left_join(., code_villages) %>%
@@ -268,7 +271,7 @@ vil_treat_agg <- int_df_full %>%
   ungroup()
 
 
-save(vil_treat_agg, file = "./data/vil_treat_agg.RData")
+save(vil_treat_agg, file = "./data/rdat/vil_treat_agg.RData")
 
 # Plot treatment intensity over time
 

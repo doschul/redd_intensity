@@ -33,13 +33,20 @@ make_step_datasets = function(dat,
     filter(Period < 2) %>%
     group_by(Code_form) %>%
     arrange(Period) %>%
+    # Fill any NA values in step_treatvars with zero
+    mutate(across(all_of(step_treatvars), ~replace_na(., 0))) %>%
     # create time invariant treatment indicator
-    mutate(across(all_of(step_treatvars), max)) %>%
+    mutate(
+      across(all_of(step_treatvars),
+             ~ .x[Period == 1][1])
+    ) %>%
     # calculate outcome change variables
     mutate(DY_forest_share = forest_share[Period == 1] - forest_share[Period == 0],
            #DY_agric_share = ag_share[Period == 1] - ag_share[Period == 0],
            post_clearing_any = Hh_clear[Period == 1],
-           post_clearing_area = hh_clearing_total[Period == 1]) %>%
+           post_clearing_area = hh_clearing_total[Period == 1], 
+           perwell_comp = perwell_comp[Period == 1],
+           income_suff = income_suff[Period == 1]) %>%
     ungroup() %>%
     filter(Period == 0)
   
@@ -56,12 +63,17 @@ make_step_datasets = function(dat,
       group_by(Code_form) %>%
       arrange(Period) %>%
       # create time invariant treatment indicator
-      mutate(across(all_of(step_treatvars), max)) %>%
+      mutate(
+        across(all_of(step_treatvars),
+               ~ .x[Period == 2][1])
+      ) %>%
       # calculate outcome change variables
       mutate(DY_forest_share = forest_share[Period == 2] - forest_share[Period == 0],
              #DY_agric_share = ag_share[Period == 1] - ag_share[Period == 0],
              post_clearing_any = Hh_clear[Period == 2],
-             post_clearing_area = hh_clearing_total[Period == 2]) %>%
+             post_clearing_area = hh_clearing_total[Period == 2],
+             perwell_comp = perwell_comp[Period == 2],
+             income_suff = income_suff[Period == 2]) %>%
       ungroup() %>%
       filter(Period == 0)
     
@@ -77,7 +89,7 @@ exclude_nonparts = function(data,
   
   # identify non-participants in treated villages
   non_participants <- data %>%
-    filter(village_indicator == 1 & treat == 0) %>%
+    filter(!!sym(village_indicator) == 1 & !!sym(treat) == 0) %>%
     pull(Code_form)
   
   # remove non-participants
@@ -90,8 +102,9 @@ exclude_nonparts = function(data,
 match_HH = function(data, 
                     treatvar, 
                     matchvars, 
-                    discard = "both", 
-                    method = "nearest"){
+                    discard = "none", 
+                    method = "nearest", 
+                    distance = "mahalanobis"){
   # function to match households to nearest neighbor in same project based on given variables
   
   # match households
@@ -100,6 +113,7 @@ match_HH = function(data,
   matched <- matchit(formula_matching, 
                      data = data, 
                      method = method,
+                     distance = distance,
                      exact = c("Project_code"),
                      replace = TRUE,
                      discard = discard)
@@ -115,6 +129,7 @@ reg_report = function(data,
                       outvar, 
                       do_match = TRUE, 
                       matchvars, 
+                      ctrlvars = NULL,
                       ...){
   
   cat(paste(treatvar, "\n"))
@@ -140,12 +155,17 @@ reg_report = function(data,
     did_matching <- FALSE)
   }
   
-  # run  step-regression
-  did_formula <- as.formula(paste(outvar, "~", treatvar, "+ (1|country_project)"))
-  
   # try lmer model, if error return NA
   tryCatch({
-    model <- lme4::lmer(did_formula, data = d)
+    # lmer requires more than one cluster for random effects.
+    # if only one project is in data, use lm instead
+    if(length(unique(d$country_project)) > 1) {
+      did_formula <- as.formula(paste(outvar, "~", paste0(c(treatvar, ctrlvars, "(1|country_project)"), collapse = "+")))
+      model <- lme4::lmer(did_formula, data = d)
+    } else {
+      did_formula <- as.formula(paste(outvar, "~", paste0(c(treatvar, ctrlvars), collapse = "+")))
+      model <- lm(did_formula, data = d)
+    }
     
     # Extract specific model coefficients
     tidy_tmp <- tidy(model) %>%
@@ -153,6 +173,7 @@ reg_report = function(data,
       filter(term %in% c(treatvar)) %>%
       mutate(matching = did_matching,
              outcome = outvar, 
+             ctrl = paste(ctrlvars, collapse = ", "),
              n_treated = sum(d[[treatvar]] > 0),
              n_comparison = sum(d[[treatvar]] == 0))
     

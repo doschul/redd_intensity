@@ -1,5 +1,5 @@
 
-loc_vars <- c("Code_form", "Country_code","Project_code","District","Village",
+loc_vars <- c("Code_form", "Country_code","Country_code_desc","Project_code","Project_code_desc","District","Village",
               "Village_Type","Household_code", "Latitude","Longitude", "Period")
 
 hh_ctrls <- c(#"Distance_min", "Distance_km", 
@@ -10,7 +10,7 @@ hh_ctrls <- c(#"Distance_min", "Distance_km",
               "Hh_floor2","Hh_walls2","Hh_roof2","Hh_own_in","Hh_own_out",
               "Hh_water","Hh_toilet","Hh_electric","Hh_cooking_fuel")
 
-outcomevars <- c("Hh_clear", "Hh_clear_total1","Hh_clear_total2","Hh_clear_total3")
+outcomevars <- c("Hh_clear", "Hh_clear_total1","Hh_clear_total2","Hh_clear_total3", "perwell_comp", "income_suff")
 
 outcomes_of_interest <- c("GFC: Def. rate (% of 2000 FC)" = "gfc_def_perc_fc2000",
                           "GFC: Forest cover (rel. to 2000)" = "gfc_remaining_forest_perc",

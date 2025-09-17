@@ -28,8 +28,7 @@ load("./data/rdat/int_df_full.RData")
 
 
 # run REDD only or not
-REDD_only <- TRUE
-
+REDD_only <- FALSE
 
 
 # prepare data
@@ -49,7 +48,7 @@ hh_baseline_with_forest <- hh_pd_bal %>%
 # restrict to baseline forest
 pd <- hh_pd_bal %>%
   #filter(Code_form %in% hh_baseline_with_forest) %>%
-  left_join(., int_df_full, by = c("Code_form", "year")) %>%
+  left_join(., int_df_full, by = c("Code_form", "year")) %>% 
   filter(!is.na(int_cat_tot_avail))
 
 
@@ -92,6 +91,16 @@ dat.long <- dat.long %>%
   group_by(Village) %>%
   mutate_at(vars(all_of(matchvars)), ~replace_na(., mean(., na.rm = TRUE)))
 
+# save data as csv
+if (REDD_only) {
+  write.csv(dat.short, file = "./data/rdat/hh_step_short_REDD.csv", row.names = FALSE)
+  write.csv(dat.long, file = "./data/rdat/hh_step_long_REDD.csv", row.names = FALSE)
+} else if (!REDD_only) {
+  write.csv(dat.short, file = "./data/rdat/hh_step_short_ALLINT.csv", row.names = FALSE)
+  write.csv(dat.long, file = "./data/rdat/hh_step_long_ALLINT.csv", row.names = FALSE)
+}
+
+
 
 # identify treatment variables with at least five treated units
 applicable_treatvars_short <- step_treatvars[sapply(step_treatvars, function(x) sum(dat.short[[x]] > 0) >= 5)]
@@ -116,7 +125,11 @@ for (i in 1:length(applicable_treatvars_short)) {
                         do_match = TRUE, 
                         matchvars = matchvars)
   
-  res_df <- rbind(res_df, res_tmp)
+  tryCatch({
+    res_df <- bind_rows(res_df, res_tmp)
+  }, error = function(e) {
+    message(paste(e$message))
+  })
 }
 
 for (i in 1:length(applicable_treatvars_long)) {
@@ -127,7 +140,11 @@ for (i in 1:length(applicable_treatvars_long)) {
                         do_match = TRUE, 
                         matchvars = matchvars)
   
-  res_df <- rbind(res_df, res_tmp)
+  tryCatch({
+    res_df <- bind_rows(res_df, res_tmp)
+  }, error = function(e) {
+    message(paste(e$message))
+  })
 }
 
 # make same for clearing outcome
@@ -139,7 +156,11 @@ for (i in 1:length(applicable_treatvars_short)) {
                         do_match = TRUE, 
                         matchvars = matchvars)
   
-  res_df <- rbind(res_df, res_tmp)
+  tryCatch({
+    res_df <- bind_rows(res_df, res_tmp)
+  }, error = function(e) {
+    message(paste(e$message))
+  })
 }
 
 for (i in 1:length(applicable_treatvars_long)) {
@@ -150,7 +171,11 @@ for (i in 1:length(applicable_treatvars_long)) {
                         do_match = TRUE, 
                         matchvars = matchvars)
   
-  res_df <- rbind(res_df, res_tmp)
+  tryCatch({
+    res_df <- bind_rows(res_df, res_tmp)
+  }, error = function(e) {
+    message(paste(e$message))
+  })
 }
 
 # Clearing area as outcome
@@ -166,7 +191,11 @@ for (i in 1:length(applicable_treatvars_short)) {
                         do_match = TRUE, 
                         matchvars = matchvars)
   
-  res_df <- rbind(res_df, res_tmp)
+  tryCatch({
+    res_df <- bind_rows(res_df, res_tmp)
+  }, error = function(e) {
+    message(paste(e$message))
+  })
 }
 
 for (i in 1:length(applicable_treatvars_long)) {
@@ -177,7 +206,72 @@ for (i in 1:length(applicable_treatvars_long)) {
                         do_match = TRUE, 
                         matchvars = matchvars)
   
-  res_df <- rbind(res_df, res_tmp)
+  tryCatch({
+    res_df <- bind_rows(res_df, res_tmp)
+  }, error = function(e) {
+    message(paste(e$message))
+  })
+}
+
+### Socioeconomic outcomes
+
+for (i in 1:length(applicable_treatvars_short)) {
+  
+  res_tmp <- reg_report(dat.short, 
+                        treatvar = applicable_treatvars_short[i], 
+                        outvar = "perwell_comp", 
+                        do_match = TRUE, 
+                        matchvars = matchvars)
+  
+  tryCatch({
+    res_df <- bind_rows(res_df, res_tmp)
+  }, error = function(e) {
+    message(paste(e$message))
+  })
+}
+
+for (i in 1:length(applicable_treatvars_long)) {
+  
+  res_tmp <- reg_report(dat.long, 
+                        treatvar = applicable_treatvars_long[i], 
+                        outvar = "perwell_comp", 
+                        do_match = TRUE, 
+                        matchvars = matchvars)
+  
+  tryCatch({
+    res_df <- bind_rows(res_df, res_tmp)
+  }, error = function(e) {
+    message(paste(e$message))
+  })
+}
+for (i in 1:length(applicable_treatvars_short)) {
+  
+  res_tmp <- reg_report(dat.short, 
+                        treatvar = applicable_treatvars_short[i], 
+                        outvar = "income_suff", 
+                        do_match = TRUE, 
+                        matchvars = matchvars)
+  
+  tryCatch({
+    res_df <- bind_rows(res_df, res_tmp)
+  }, error = function(e) {
+    message(paste(e$message))
+  })
+}
+
+for (i in 1:length(applicable_treatvars_long)) {
+  
+  res_tmp <- reg_report(dat.long, 
+                        treatvar = applicable_treatvars_long[i], 
+                        outvar = "income_suff", 
+                        do_match = TRUE, 
+                        matchvars = matchvars)
+  
+  tryCatch({
+    res_df <- bind_rows(res_df, res_tmp)
+  }, error = function(e) {
+    message(paste(e$message))
+  })
 }
 
 
@@ -219,7 +313,7 @@ if (REDD_only) {
 
 
 # read results
-REDD_only <- FALSE
+REDD_only <- TRUE
 res_out1 <- read.csv("./out/tbl/hh_step_res_REDD.csv") %>%
   mutate(exposure = factor(exposure, levels = c("Available","Involved","Changed behavior")))
 res_out1 <- read.csv("./out/tbl/hh_step_res_ALLINT.csv") %>%
@@ -249,6 +343,7 @@ p.step.fc <- ggplot(res_out1 %>%
   coord_cartesian(ylim=c(-0.2, 0.4)) +
   theme(legend.position = "bottom")
 
+p.step.fc
 
 p.step.clrb <- ggplot(res_out1 %>% 
                         mutate(Significance = ifelse(abs(statistic) > 1.96, "Yes (95%)", "n.s.")) %>%
@@ -271,6 +366,8 @@ p.step.clrb <- ggplot(res_out1 %>%
   scale_x_continuous(breaks = breaks_pretty()) +
   coord_cartesian(ylim=c(-0.2, 0.4)) +
   theme(legend.position = "bottom")
+
+p.step.clrb
 
 # clearing area plot
 p.step.clrarea <- ggplot(res_out1 %>% 
@@ -296,6 +393,57 @@ p.step.clrarea <- ggplot(res_out1 %>%
   theme(legend.position = "bottom")
 
 p.step.clrarea
+
+
+# Perceived well-being
+p.step.perwell <- ggplot(res_out1 %>% 
+                           mutate(Significance = ifelse(abs(statistic) > 1.96, "Yes (95%)", "n.s.")) %>%
+                           filter(grepl("cat", term),
+                                  outcome == "perwell_comp"), 
+                         aes(x = step, y = estimate)) +
+  theme_bw() + 
+  geom_hline(yintercept=0, linetype="dashed") +
+  #geom_point(aes(color = horizon)) +
+  geom_pointrange(aes(ymin = estimate - 1.96 * std.error, 
+                      ymax = estimate + 1.96 * std.error,
+                      shape = Significance,
+                      color = data),
+                  position = position_dodge(0.3)) +
+  labs(x = NULL, y = NULL, title = 'Change in perceived wellbeing DiD-estimates') +
+  facet_grid(rows = vars(indicator), 
+             cols = vars(exposure), 
+             switch = "y", 
+             scales = "fixed") +
+  scale_x_continuous(breaks = breaks_pretty()) +
+  coord_cartesian(ylim=c(-0.5, 0.6)) +
+  theme(legend.position = "bottom")
+
+p.step.perwell
+
+# sufficient income
+p.step.suffinc <- ggplot(res_out1 %>% 
+                           mutate(Significance = ifelse(abs(statistic) > 1.96, "Yes (95%)", "n.s.")) %>%
+                           filter(grepl("cat", term),
+                                  outcome == "income_suff"), 
+                         aes(x = step, y = estimate)) +
+  theme_bw() + 
+  geom_hline(yintercept=0, linetype="dashed") +
+  #geom_point(aes(color = horizon)) +
+  geom_pointrange(aes(ymin = estimate - 1.96 * std.error, 
+                      ymax = estimate + 1.96 * std.error,
+                      shape = Significance,
+                      color = data),
+                  position = position_dodge(0.3)) +
+  labs(x = NULL, y = NULL, title = 'Change in sufficient income DiD-estimates') +
+  facet_grid(rows = vars(indicator), 
+             cols = vars(exposure), 
+             switch = "y", 
+             scales = "fixed") +
+  scale_x_continuous(breaks = breaks_pretty()) +
+  coord_cartesian(ylim=c(-0.5, 0.6)) +
+  theme(legend.position = "bottom")
+
+p.step.suffinc
 
 # save plots
 if (REDD_only) {
@@ -333,19 +481,26 @@ meta_dat <- res_out1 %>%
 m.fc.avg <- metafor::rma.mv(yi = estimate, 
                             V = vi, 
                             random = ~ 1 | id,
-                            data = meta_dat %>% filter(outcome == "DY_forest_share", grepl("cat", term)),
+                            data = meta_dat %>% 
+                              filter(outcome == "DY_forest_share", 
+                                     grepl("cat", term),
+                                     indicator == "Total"),
                             method = "REML")
 
 m.fc.avg.bin <- metafor::rma.mv(yi = estimate, 
                             V = vi, 
                             random = ~ 1 | id,
-                            data = meta_dat_full %>% filter(outcome == "DY_forest_share", grepl("bin", term)),
+                            data = meta_dat_full %>% 
+                              filter(outcome == "DY_forest_share", 
+                                     grepl("bin", term)),
                             method = "REML")
 
 m.fc.cat.bin <- metafor::rma.mv(yi = estimate, 
                                 V = vi, 
                                 random = ~ 1 | id,
-                                data = meta_dat_full %>% filter(outcome == "DY_forest_share", grepl("bin", term)),
+                                data = meta_dat_full %>% 
+                                  filter(outcome == "DY_forest_share", 
+                                         grepl("bin", term)),
                                 mods = ~ 0 + indicator,
                                 method = "REML")
 
@@ -359,14 +514,20 @@ m.fc.exp.bin <- metafor::rma.mv(yi = estimate,
 m.fc.dat <- metafor::rma.mv(yi = estimate, 
                 V = vi, 
                 random = ~ 1 | id / facet_id,
-                data = meta_dat %>% filter(outcome == "DY_forest_share", grepl("cat", term)),
+                data = meta_dat %>% 
+                  filter(outcome == "DY_forest_share", 
+                         grepl("cat", term),
+                         indicator == "Total"),
                 mods = ~ 0 + data,
                 method = "REML")
 
 m.fc.ind_cat <- metafor::rma.mv(yi = estimate, 
                       V = vi, 
                       random = ~ 1 | id / facet_id,
-                      data = meta_dat %>% filter(outcome == "DY_forest_share", grepl("cat", term)),
+                      data = meta_dat %>% 
+                        filter(outcome == "DY_forest_share", 
+                               grepl("cat", term),
+                               indicator == "Total"),
                       mods = ~ 0 + indicator,
                       method = "REML")
 
@@ -380,22 +541,31 @@ m.fc.ind_type <- metafor::rma.mv(yi = estimate,
 m.fc.exp <- metafor::rma.mv(yi = estimate, 
                       V = vi, 
                       random = ~ 1 | id / facet_id,
-                      data = meta_dat %>% filter(outcome == "DY_forest_share", grepl("cat", term)),
+                      data = meta_dat %>% 
+                        filter(outcome == "DY_forest_share", 
+                               grepl("cat", term),
+                               indicator == "Total"),
                       mods = ~ 0 + exposure,
                       method = "REML")
 
 m.fc.step <- metafor::rma.mv(yi = estimate, 
                       V = vi, 
                       random = ~ 1 | id / facet_id, 
-                      data = meta_dat %>% filter(outcome == "DY_forest_share", grepl("cat", term)),
+                      data = meta_dat %>% 
+                        filter(outcome == "DY_forest_share", 
+                               grepl("cat", term),
+                               indicator == "Total"),
                       mods = ~ step + step_sqrd,
                       method = "REML")
 
 m.fc.full.cat <- metafor::rma.mv(yi = estimate, 
                       V = vi, 
                       random = ~ 1 | id / facet_id,
-                      data = meta_dat %>% filter(outcome == "DY_forest_share", grepl("cat", term)),
-                      mods = ~ step + step_sqrd + exposure + indicator + data,
+                      data = meta_dat %>% 
+                        filter(outcome == "DY_forest_share", 
+                               grepl("cat", term),
+                               indicator == "Total"),
+                      mods = ~ step + step_sqrd + exposure + data,
                       method = "REML")
 
 m.fc.full.type <- metafor::rma.mv(yi = estimate, 
@@ -417,6 +587,85 @@ screenreg(list(m.fc.step, m.fc.dat, m.fc.ind_cat, m.fc.ind_type, m.fc.exp, m.fc.
           groups = coef_groups, 
           custom.coef.names = coef_names)
 
+# Perceived wellbeing
+m.pw.avg <- metafor::rma.mv(yi = estimate, 
+                            V = vi, 
+                            random = ~ 1 | id,
+                            data = meta_dat %>% filter(outcome == "perwell_comp", grepl("cat", term)),
+                            method = "REML")
+
+m.pw.avg.bin <- metafor::rma.mv(yi = estimate, 
+                                V = vi, 
+                                random = ~ 1 | id,
+                                data = meta_dat_full %>% filter(outcome == "perwell_comp", grepl("bin", term)),
+                                method = "REML")
+
+m.pw.cat.bin <- metafor::rma.mv(yi = estimate, 
+                                V = vi, 
+                                random = ~ 1 | id,
+                                data = meta_dat_full %>% filter(outcome == "perwell_comp", grepl("bin", term)),
+                                mods = ~ 0 + indicator,
+                                method = "REML")
+
+m.pw.exp.bin <- metafor::rma.mv(yi = estimate, 
+                                V = vi, 
+                                random = ~ 1 | id,
+                                data = meta_dat_full %>% filter(outcome == "perwell_comp", grepl("bin", term)),
+                                mods = ~ 0 + exposure,
+                                method = "REML")
+
+m.pw.dat <- metafor::rma.mv(yi = estimate, 
+                            V = vi, 
+                            random = ~ 1 | id / facet_id,
+                            data = meta_dat %>% filter(outcome == "perwell_comp", grepl("cat", term)),
+                            mods = ~ 0 + data,
+                            method = "REML")
+
+m.pw.ind_cat <- metafor::rma.mv(yi = estimate, 
+                                V = vi, 
+                                random = ~ 1 | id / facet_id,
+                                data = meta_dat %>% filter(outcome == "perwell_comp", grepl("cat", term)),
+                                mods = ~ 0 + indicator,
+                                method = "REML")
+
+m.pw.ind_type <- metafor::rma.mv(yi = estimate, 
+                                 V = vi, 
+                                 random = ~ 1 | id / facet_id,
+                                 data = meta_dat %>% filter(outcome == "perwell_comp", !grepl("cat", term)),
+                                 mods = ~ 0 + indicator,
+                                 method = "REML")
+
+m.pw.exp <- metafor::rma.mv(yi = estimate, 
+                            V = vi, 
+                            random = ~ 1 | id / facet_id,
+                            data = meta_dat %>% filter(outcome == "perwell_comp", grepl("cat", term)),
+                            mods = ~ 0 + exposure,
+                            method = "REML")
+
+m.pw.step <- metafor::rma.mv(yi = estimate, 
+                             V = vi, 
+                             random = ~ 1 | id / facet_id, 
+                             data = meta_dat %>% filter(outcome == "perwell_comp", grepl("cat", term)),
+                             mods = ~ step + step_sqrd,
+                             method = "REML")
+
+m.pw.full.cat <- metafor::rma.mv(yi = estimate, 
+                                 V = vi, 
+                                 random = ~ 1 | id / facet_id,
+                                 data = meta_dat %>% filter(outcome == "perwell_comp", grepl("cat", term)),
+                                 mods = ~ step + step_sqrd + exposure + indicator + data,
+                                 method = "REML")
+
+m.pw.full.type <- metafor::rma.mv(yi = estimate, 
+                                  V = vi, 
+                                  random = ~ 1 | id / facet_id,
+                                  data = meta_dat %>% filter(outcome == "perwell_comp", !grepl("cat", term)),
+                                  mods = ~ step + step_sqrd + exposure + indicator + data,
+                                  method = "REML")
+
+screenreg(list(m.pw.step, m.pw.dat, m.pw.ind_cat, m.pw.ind_type, m.pw.exp, m.pw.full.cat, m.pw.full.type), 
+          groups = coef_groups, 
+          custom.coef.names = coef_names)
 
 
 
@@ -462,8 +711,8 @@ m.clr.full.cat <- metafor::rma.mv(yi = estimate,
                              V = vi, 
                              random = ~ 1 | id / facet_id,
                              data = meta_dat %>% filter(outcome == "post_clearing_any", grepl("cat", term)),
-                             mods = ~ step + exposure + indicator + data,
-                             method = "ML")
+                             mods = ~ step + step_sqrd + exposure + indicator + data,
+                             method = "REML", verbose = T)
 
 m.clr.full.typ <- metafor::rma.mv(yi = estimate, 
                               V = vi, 
